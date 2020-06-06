@@ -1,0 +1,23 @@
+[
+    {
+      "frase": "Dominae culpa avaritia est",
+      "genitivo": "Dominae",
+      "soggetto": "culpa",
+      "predicato nominale": "avaritia est"
+    },
+    {
+      "frase": "Vulpecula ciconiam invitat",
+      "soggetto": "Vulpecula",
+      "accusativo": "ciconiam",
+      "predicato verbale": "invitat"
+    },
+    {
+      "frase": "Fortunae iniurias agricolae saepe timent",
+      "genitivo": "Fortunae",
+      "accusativo": "iniurias",
+      "soggetto": "agricolae",
+      "avverbio": "saepe",
+      "predicato verbale": "timent"
+    }
+
+]
