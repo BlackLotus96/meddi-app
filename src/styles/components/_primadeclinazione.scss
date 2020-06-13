@@ -8,16 +8,20 @@
   padding: 50px 10px;
   border-radius: 30px;
 
-}
 
+}
 .frase {
   background-color: white;
   border-radius: 30px;
   width: 100%;
   max-width: 800px;
   padding: $sm $md;
+  display: flex;
+  justify-content: center;
+
 
 }
+
 .font-weight-normal {
   background-color: white;
   border-radius: 30px;
