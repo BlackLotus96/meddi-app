@@ -1,23 +1,82 @@
  [
     {
       "frase": "Dominae culpa avaritia est",
-      "genitivo": "Dominae",
-      "soggetto": "culpa",
-      "predicato nominale": "avaritia est"
+      "Dominae": {
+        "caso": "genitivo",
+        "tipo": "sostantivo",
+        "genere": "femminile",
+        "numero": "singolare",
+        "declinazione": "prima"
+      },
+      "culpa": {
+        "caso": "nominativo",
+        "tipo": "sostantivo",
+        "genere": "femminile",
+        "numero": "singolare",
+        "declinazione": "prima"
+      },
+      "avaritia est": {
+        "tipo": "predicatoNominale"
+      }
     },
     {
       "frase": "Vulpecula ciconiam invitat",
-      "soggetto": "Vulpecula",
-      "accusativo": "ciconiam",
-      "predicato verbale": "invitat"
+      "Vulpecula": {
+        "caso":"nominativo",
+        "tipo": "sostantivo",
+        "genere": "femminile",
+        "numero": "singolare",
+        "declinazione": "prima"
+      },
+      "ciconiam": {
+        "caso":"accusativo",
+        "tipo": "sostantivo",
+        "genere": "femminile",
+        "numero": "singolare",
+        "declinazione": "prima"
+      },
+      "invitat": {
+        "coniugazione": "prima",
+        "modo": "indicativo",
+        "tempo": "presente",
+        "persona": "terza",
+        "numero": "singolare",
+        "tipo": "predicatoVerbale"
+      }
     },
     {
       "frase": "Fortunae iniurias agricolae saepe timent",
-      "genitivo": "Fortunae",
-      "accusativo": "iniurias",
-      "soggetto": "agricolae",
-      "avverbio": "saepe",
-      "predicato verbale": "timent"
+      "Fortunae": {
+        "caso":"genitivo",
+        "tipo": "sostantivo",
+        "genere": "femminile",
+        "numero": "singolare",
+        "declinazione": "prima"
+      },
+      "iniurias": {
+        "caso": "accusativo",
+        "tipo": "sostantivo",
+        "genere": "femminile",
+        "numero": "plurale",
+        "declinazione": "prima"
+      },
+      "agricolae": {
+        "caso":"nominativo",
+        "tipo": "sostantivo",
+        "genere": "maschile",
+        "numero": "singolare",
+        "declinazione": "prima"
+      },
+
+      "saepe": {"avverbio": "avverbio"},
+      "timent": {
+        "coniugazione": "seconda",
+        "modo": "indicativo",
+        "tempo": "presente",
+        "persona": "terza",
+        "numero": "plurale",
+        "tipo": "predicatoVerbale"
+      }
     }
 
 ]

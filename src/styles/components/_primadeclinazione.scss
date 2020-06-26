@@ -1,35 +1,52 @@
-.prima-declinazione-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1024px;
-  margin: 50px auto;
+
+.container {
+  font-size: xx-large;
   background-color: lightgray;
-  padding: 50px 10px;
   border-radius: 30px;
-
-
-}
-.frase {
-  background-color: white;
-  border-radius: 30px;
-  width: 100%;
   max-width: 800px;
-  padding: $sm $md;
+  padding: 40px 40px;
   display: flex;
-  justify-content: center;
-
+  justify-content: space-evenly;
+  margin: auto;
+  flex-wrap: wrap;
 
 }
 
-.font-weight-normal {
-  background-color: white;
-  border-radius: 30px;
+.nominativo {
+  &.active {
+    color: red;
+  }
+}
+.genitivo {
+  &.active {
+    color: deeppink;
+  }
+}
+
+
+
+.predicatoNominale {
+  &.active {
+    color: yellow;
+  }
+}
+
+.predicatoVerbale {
+  &.active {
+    color: blue;
+  }
+}
+
+
+
+.frase {
   width: 100%;
-  max-width: 800px;
-  padding: 30px;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
 }
+
+
 .button-container {
   display: flex;
   flex-direction: row;
@@ -38,8 +55,5 @@
   align-content: center;
   }
 
-button.btn.btn-light, button.btn.btn-primary {
-  border-radius: 30px;
-}
 
 
