@@ -6,17 +6,105 @@
         "tipo": "sostantivo",
         "genere": "femminile",
         "numero": "singolare",
-        "declinazione": "prima"
+        "declinazione": "prima",
+        "radice": "Domin",
+        "desinenza": "ae",
+        "ambiguo": [{
+          "caso": "dativo",
+          "tipo": "sostantivo",
+          "genere": "femminile",
+          "numero": "singolare",
+          "declinazione": "prima",
+          "radice": "Domin",
+          "desinenza": "ae"
+        },
+          {
+            "caso": "nominativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "plurale ",
+            "declinazione": "prima",
+            "radice": "Domin",
+            "desinenza": "ae"
+          },
+        {
+            "caso": "vocativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "plurale ",
+            "declinazione": "prima",
+            "radice": "Domin",
+            "desinenza": "ae"
+        }]
       },
       "culpa": {
         "caso": "nominativo",
         "tipo": "sostantivo",
         "genere": "femminile",
         "numero": "singolare",
-        "declinazione": "prima"
+        "declinazione": "prima",
+        "radice": "culp",
+        "desinenza": "ă",
+        "ambiguo": [
+          {
+            "caso": "ablativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima",
+            "radice": "culp",
+            "desinenza": "ā"
+          },
+          {
+            "caso": "vocativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima",
+            "radice": "culp",
+            "desinenza": "ă"
+          }
+        ]
       },
       "avaritia est": {
-        "tipo": "predicatoNominale"
+        "tipo": "predicatoNominale",
+        "avaritia": {
+            "caso": "nominativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima",
+            "radice": "avariti",
+            "desinenza": "ă",
+            "ambiguo": [
+            {
+              "caso": "ablativo",
+              "tipo": "sostantivo",
+              "genere": "femminile",
+              "numero": "singolare ",
+              "declinazione": "prima",
+              "radice": "avariti",
+              "desinenza": "ā"
+            },
+            {
+              "caso": "vocativo",
+              "tipo": "sostantivo",
+              "genere": "femminile",
+              "numero": "singolare ",
+              "declinazione": "prima",
+              "radice": "avariti",
+              "desinenza": "ă"
+            }
+          ]
+          },
+        "est": {
+          "coniugazione": "essere",
+          "modo": "indicativo",
+          "tempo": "presente",
+          "persona": "terza",
+          "numero": "singolare",
+          "tipo": "predicatoVerbale"
+      }
       }
     },
     {
@@ -26,14 +114,39 @@
         "tipo": "sostantivo",
         "genere": "femminile",
         "numero": "singolare",
-        "declinazione": "prima"
+        "declinazione": "prima",
+        "radice": "Vulpecul",
+        "desinenza": "ă",
+        "ambiguo": [
+          {
+            "caso": "ablativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima",
+            "radice": "Vulpecul",
+            "desinenza": "ā"
+          },
+          {
+            "caso": "vocativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima",
+            "radice": "Vulpecul",
+            "desinenza": "ă"
+          }
+        ]
       },
       "ciconiam": {
         "caso":"accusativo",
         "tipo": "sostantivo",
         "genere": "femminile",
         "numero": "singolare",
-        "declinazione": "prima"
+        "declinazione": "prima",
+        "radice": "ciconi",
+        "desinenza": "am"
+
       },
       "invitat": {
         "coniugazione": "prima",
@@ -41,7 +154,10 @@
         "tempo": "presente",
         "persona": "terza",
         "numero": "singolare",
-        "tipo": "predicatoVerbale"
+        "tipo": "predicatoVerbale",
+        "radice": "invit",
+        "vocale tematica":"a",
+        "desinenza": "t"
       }
     },
     {
@@ -51,7 +167,30 @@
         "tipo": "sostantivo",
         "genere": "femminile",
         "numero": "singolare",
-        "declinazione": "prima"
+        "declinazione": "prima",
+        "ambiguo": [
+          {
+            "caso": "dativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima"
+          },
+          {
+            "caso": "nominativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "plurale ",
+            "declinazione": "prima"
+          },
+          {
+            "caso": "vocativo",
+            "tipo": "sostantivo",
+            "genere": "femminile",
+            "numero": "plurale ",
+            "declinazione": "prima"
+          }
+        ]
       },
       "iniurias": {
         "caso": "accusativo",
@@ -64,8 +203,31 @@
         "caso":"nominativo",
         "tipo": "sostantivo",
         "genere": "maschile",
-        "numero": "singolare",
-        "declinazione": "prima"
+        "numero": "plurale",
+        "declinazione": "prima",
+        "ambiguo": [
+          {
+            "caso": "genitivo",
+            "tipo": "sostantivo",
+            "genere": "maschile",
+            "numero": "singolare ",
+            "declinazione": "prima"
+          },
+          {
+            "caso": "dativo",
+            "tipo": "sostantivo",
+            "genere": "maschile",
+            "numero": "singolare ",
+            "declinazione": "prima"
+          },
+          {
+            "caso": "vocativo",
+            "tipo": "sostantivo",
+            "genere": "maschile",
+            "numero": "plurale ",
+            "declinazione": "prima"
+          }
+        ]
       },
 
       "saepe": {"avverbio": "avverbio"},
