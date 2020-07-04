@@ -12,7 +12,7 @@ const Home = () => (
             <h1>Esercizi sulla prima declinazione</h1>
             <div className="play-button-container">
                 <ul>
-                    <li><Link className="play-button" to="/play/prima_declinazione">Inizia esercizi</Link></li>
+                    <li><Link className="play-button" to="/play/primo_modulo">Inizia esercizi primo modulo</Link></li>
                 </ul>
             </div>
         </div>
