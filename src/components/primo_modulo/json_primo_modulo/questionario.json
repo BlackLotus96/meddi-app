@@ -1,0 +1,42 @@
+[
+  {
+    "arrayDomande": [
+      {
+        "domanda": "Il Verbo che è stato sottolineato è...",
+        "opzioneA": "Singolare",
+        "opzioneB": "Plurale",
+        "risposta": "Singolare"
+      },
+      {
+        "domanda": "Il predicato est di che tipo è?",
+        "opzioneA": "Predicato Nominale",
+        "opzioneB": "Predicato Verbale",
+        "risposta": "Predicato Verbale",
+        "domandaSbagliata": {
+          "sottoDomanda": "Quanti nominativi ci sono?",
+          "opzioneA": "1",
+          "opzioneB": "2",
+          "risposta": "1"
+        }
+      },
+      {
+        "domanda": "Che caso regge la preposizione \"in\" ?",
+        "opzioneA": "Ablativo",
+        "opzioneB": "Accusativo",
+        "risposta": "Ablativo",
+        "domandaSbagliata": {
+          "sopraDomanda": "Nella frase",
+          "fraseEsempio": [{"Io": "SOGGETTO"}, {"vado": "PREDICATO VERBALE"}, {"in palestra":  "COMPLEMENTO..."}],
+          "sottoDomanda": "che complemento è \"in palestra\" ?",
+          "opzioneA": "Stato In Luogo",
+          "opzioneB": "Moto A Luogo",
+          "risposta": "Moto A Luogo"
+        }
+      },
+      {
+        "domanda": "fine"
+      }
+
+    ]
+  }
+]

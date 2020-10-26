@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
 import "./styles/styles.scss";
 import App from './App';
-import 'bootstrap/dist/css/bootstrap.css';
+import { Provider } from "react-redux"
+import store from './app/store';
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(<App/>,
+
+ReactDOM.render(
+        <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+        </BrowserRouter>,
   document.getElementById('root')
 
 );
+
 
 

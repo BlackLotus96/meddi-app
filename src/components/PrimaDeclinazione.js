@@ -1,21 +1,51 @@
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
+
 import GetFrase from "./Frase"
-import GetFrasePrimoModulo from "./primo_modulo/FrasePrimoModulo"
-import IniziaEsercizio from "./primo_modulo/InterfacciaPrimoEsercizio";
-import frasi from "./primo_modulo/frasi-primo-modulo"
+import GetFrasePrimoModulo, {SentenceClickable} from "./primo_modulo/FrasePrimoModulo"
+import IniziaEsercizio, {ContainerModals} from "./primo_modulo/InterfacciaPrimoEsercizio";
+import IniziaEsercizioDue from "./primo_modulo/InterfacciaSecondoEsercizio";
+import {useSelector} from "react-redux";
+import {selectContainerModals, selectStartTranslation} from "../features/questionsSlice";
+import {selectCurrentSentence, selectSentence} from "../features/sentenceSlice";
+import {StyledDivider} from "./css_primo_modulo/components_primo_modulo";
+import {Divider} from "antd";
+import Text from "antd/es/typography/Text";
+import {DndComponentOptions} from "./primo_modulo/translation/DragDropComponents";
+    /**
+    function rendersToSwitch(numberSentence){
 
-function RenderizzaFrase() {
-    return <GetFrase />
-}
+        switch(numberSentence){
+            case 0:
+            return <IniziaEsercizio />
 
-    function RenderizzaFrasePrimoModulo() {
-        const [disabled, setDisabled] = useState(false)
-        const [paroleAttiveBool, setParoleAttive] = useState(false )
+            case 1:
+            return <IniziaEsercizioDue/>
+
+        }
+    }
+**/
+
+    function RenderizzaFrasePrimoModulo(props) {
+        //const showContainerModals = useSelector(selectContainerModals)
+        const sentence = useSelector(selectSentence)
+        const showTranslation = useSelector(selectStartTranslation)
+        const numberSentence = useSelector(selectCurrentSentence)
+
+
+
         return (
-            <div className="pagina-frase" id="pagina-frase">
-                <GetFrasePrimoModulo frasi={frasi} disabled={disabled} setDisabled={setDisabled} paroleAttiveBool={paroleAttiveBool}/>
-                <IniziaEsercizio frasi={frasi} disabled={disabled} setDisabled={setDisabled} />
+            <div className="container-frase-e-esercizi" >
+                {<StyledDivider  orientation="center">Analisi della frase "{sentence.sentence}"</StyledDivider>}
+                <div>
+                    <GetFrasePrimoModulo />
+                </div>
+
+                {<IniziaEsercizio/>}
+                {<StyledDivider orientation="center">Traduzione della frase "{sentence.sentence}"</StyledDivider>}
+                {showTranslation ? <DndComponentOptions />  : null}
+
             </div>
+
             )
     }
 

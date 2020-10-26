@@ -1,0 +1,164 @@
+[
+  {
+    "frase": "Puellă est in scholā",
+    "Puellă": {
+      "tag": ["Nominativo"],
+      "caso": "nominativo",
+      "parteDiscorso": "Nominativo",
+      "genere": "femminile",
+      "numero": "singolare",
+      "declinazione": "prima",
+      "radice": "Puell",
+      "desinenza": "ă",
+      "ambiguo": [
+        {
+          "caso": "ablativo",
+          "parteDiscorso": "sostantivo",
+          "genere": "femminile",
+          "numero": "singolare ",
+          "declinazione": "prima",
+          "radice": "Puell",
+          "desinenza": "ā"
+          },
+        {
+          "caso": "vocativo",
+          "parteDiscorso": "sostantivo",
+          "genere": "femminile",
+          "numero": "singolare ",
+          "declinazione": "prima",
+          "radice": "Puell",
+          "desinenza": "ă"
+        }
+      ]
+    },
+    "est": {
+          "tag": ["Singolare", "Predicato Verbale"],
+          "coniugazione": "essere",
+          "modo": "indicativo",
+          "tempo": "presente",
+          "persona": "terza",
+          "numero": "singolare",
+          "parteDiscorso": "Predicato Verbale"
+      },
+    "in": {
+      "tag": [],
+      "parteDiscorso": "Preposizione",
+      "complemento": "Stato In Luogo"
+    },
+    "scholā": {
+      "tag": ["Stato In Luogo"],
+      "caso": "ablativo",
+      "parteDiscorso": "Ablativo",
+      "genere": "femminile",
+      "numero": "singolare",
+      "declinazione": "prima",
+      "radice": "schol",
+      "desinenza": "ā",
+      "complemento": "Stato In Luogo",
+      "ambiguo": [
+        {
+          "caso": "nominativo",
+          "parteDiscorso": "sostantivo",
+          "genere": "femminile",
+          "numero": "singolare ",
+          "declinazione": "prima",
+          "radice": "schol",
+          "desinenza": "ā"
+          },
+        {
+          "caso": "vocativo",
+          "parteDiscorso": "sostantivo",
+          "genere": "femminile",
+          "numero": "singolare ",
+          "declinazione": "prima",
+          "radice": "schol",
+          "desinenza": "ă"
+        }
+      ]
+    }
+
+  },
+  {
+    "frase": "Dominae pulchrae sunt",
+    "Dominae": {
+        "caso": "nominativo",
+        "parteDiscorso": "Nominativo",
+        "genere": "femminile",
+        "numero": "plurale",
+        "declinazione": "prima",
+        "radice": "Domin",
+        "desinenza": "ae",
+        "ambiguo": [{
+          "caso": "genitivo",
+          "parteDiscorso": "sostantivo",
+          "genere": "femminile",
+          "numero": "singolare",
+          "declinazione": "prima",
+          "radice": "Domin",
+          "desinenza": "ae"
+        },
+          {
+            "caso": "dativo",
+            "parteDiscorso": "sostantivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima",
+            "radice": "Domin",
+            "desinenza": "ae"
+          },
+        {
+            "caso": "vocativo",
+            "parteDiscorso": "sostantivo",
+            "genere": "femminile",
+            "numero": "plurale ",
+            "declinazione": "prima",
+            "radice": "Domin",
+            "desinenza": "ae"
+        }]
+  },
+    "pulchrae": {
+        "caso": "nominativo",
+        "parteDiscorso": "aggettivo",
+        "genere": "femminile",
+        "numero": "plurale",
+        "declinazione": "prima",
+        "radice": "pulchr",
+        "desinenza": "ae",
+        "ambiguo": [{
+          "caso": "genitivo",
+          "parteDiscorso": "aggettivo",
+          "genere": "femminile",
+          "numero": "singolare",
+          "declinazione": "prima",
+          "radice": "pulchr",
+          "desinenza": "ae"
+        },
+          {
+            "caso": "dativo",
+            "parteDiscorso": "aggettivo",
+            "genere": "femminile",
+            "numero": "singolare ",
+            "declinazione": "prima",
+            "radice": "pulchr",
+            "desinenza": "ae"
+          },
+        {
+            "caso": "vocativo",
+            "parteDiscorso": "aggettivo",
+            "genere": "femminile",
+            "numero": "plurale ",
+            "declinazione": "prima",
+            "radice": "pulchr",
+            "desinenza": "ae"
+        }]
+    },
+    "sunt": {
+          "coniugazione": "essere",
+          "modo": "indicativo",
+          "tempo": "presente",
+          "persona": "terza",
+          "numero": "plurale",
+          "parteDiscorso": "predicato nominale"
+      }
+  }
+]

@@ -1,0 +1,21 @@
+.ant-message {
+  .ant-message-notice-content{
+    padding: 0
+  }
+  .ant-message-custom-content {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    font-family: OpenDyslexic-Regular;
+    &.ant-message-success {
+      background-color: palegoldenrod;
+    }
+    &.ant-message-error {
+      background-color: palegoldenrod;
+    }
+  }
+
+  .anticon {
+    top: 0;
+  }
+}
