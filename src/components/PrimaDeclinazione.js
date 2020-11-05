@@ -43,7 +43,6 @@ import {DndComponentOptions} from "./primo_modulo/translation/DragDropComponents
                 {<IniziaEsercizio/>}
                 {<StyledDivider orientation="center">Traduzione della frase "{sentence.sentence}"</StyledDivider>}
                 {showTranslation ? <DndComponentOptions />  : null}
-
             </div>
 
             )

@@ -6,11 +6,12 @@ import {
     nextQuestion,
     selectShowResult,
     selectStartTranslation,
-
+    selectIsAmbig,
+    setIsAmbig,
     setShowResult,
     setStartTranslation,
     setZeroCurrentQuestion,
-    setDisplayQuestion, setStartExercise,
+    setDisplayQuestion, setStartExercise, selectSetQuestions,
 } from "../../features/questionsSlice";
 import {selectCurrentSentence} from "../../features/sentenceSlice";
 
@@ -25,6 +26,16 @@ export const success = () => {
                 },
               });
         }
+export const warning = () => {
+    message.warning({
+        content: "Occhio alla traduzione!",
+        duration: 0.5,
+        style: {
+            marginTop: '0vh',
+            backgroundColor: "darkblue"
+        },
+    });
+}
 export const error = () => {
     message.error({
               content: "Attenzione!",
@@ -41,6 +52,44 @@ const TitleModalCorrectAnswer = () => {
         <p style={{textAlign: "center"}}>Bravo!</p>
     )
 }
+export const FineEsercizioAmbiguo = () => {
+    const dispatch = useDispatch()
+    const showTranslation = useSelector(selectStartTranslation)
+    const [showPopupTranslation, setShowPopupTranslation] = useState(true)
+    const scrollToRef = () => window.scrollTo({
+            top: 400,
+            behavior: 'smooth'
+        })
+    function OnClick(){
+
+        setShowPopupTranslation(false)
+        dispatch(setStartExercise({valueOfBool: false}))
+        scrollToRef()
+
+
+    }
+    return (
+            <StyledModal
+                visible={showPopupTranslation}
+                width={300}
+                transparent
+                bodyStyle={{height: "auto"}}
+                footer={null}
+                answer = "true"
+            >
+                <StyledResult
+                    status="warning"
+                    title="Ok! Ma attento in fase di traduzione!!"
+                    extra={[
+                        <Button onClick={OnClick} type="primary" key="console">
+                            Inizia Traduzione!
+                        </Button>,
+                    ]}
+                />
+            </StyledModal>
+        )
+
+    }
 export const FineEsercizio = () => {
     const dispatch = useDispatch()
     const showTranslation = useSelector(selectStartTranslation)
@@ -52,7 +101,6 @@ export const FineEsercizio = () => {
     function OnClick(){
 
         setShowPopupTranslation(false)
-        dispatch(setZeroCurrentQuestion())
         dispatch(setStartExercise({valueOfBool: false}))
         scrollToRef()
 
@@ -69,7 +117,7 @@ export const FineEsercizio = () => {
             >
                 <StyledResult
                     status="success"
-                    title="Analisi completato!"
+                    title="ANALISI COMPLETATA!"
                     extra={[
                         <Button onClick={OnClick} type="primary" key="console">
                             Inizia Traduzione!
@@ -81,16 +129,21 @@ export const FineEsercizio = () => {
 
     }
 
-export const ModalCorrectAnswer = () => {
+export const  ModalCorrectAnswer = () => {
+    const isAmbig = useSelector(selectIsAmbig)
     const showResult = useSelector(selectShowResult)
+    const numberOfSetQuestions = useSelector(selectSetQuestions)
     const dispatch = useDispatch()
     const numberSentence = useSelector(selectCurrentSentence)
+    console.log("showResult", showResult, "isAmbig", isAmbig)
     function OnClick(){
 
         dispatch(setShowResult({valueOfBool: false}))
-
+        dispatch(setIsAmbig({valueOfBool: false}))
+        dispatch(nextQuestion({numberOfSetQuestions: numberOfSetQuestions}))
     }
-    return (
+    if (isAmbig === false) {
+        return (
             <StyledModal
                 visible={showResult}
                 width={300}
@@ -109,6 +162,31 @@ export const ModalCorrectAnswer = () => {
                     ]}
                 />
             </StyledModal>
-        )
+            )
+        }
+    else{
+        return (
+            <StyledModal
+                visible={isAmbig}
+                width={300}
+                transparent
+                bodyStyle={{height: 400}}
+                footer={null}
+                answer = "true"
+            >
+                <StyledResult
+                    status="warning"
+                    title="Ok! Ma attento in fase di traduzione!!"
+                    extra={[
+                        <Button onClick={OnClick} type="primary" key="console">
+                            Prossima Domanda
+                        </Button>,
+                    ]}
+                />
+            </StyledModal>
+            )
+    }
+
 
     }
+

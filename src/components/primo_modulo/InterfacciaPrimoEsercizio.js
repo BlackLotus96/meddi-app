@@ -11,13 +11,24 @@ import {
 } from "../components_primo_esercizio/FeedbackPrimaFrase/FeedbackSecondaDomanda";
 import {TabellaComplementiLuogo} from "../components_primo_esercizio/FeedbackPrimaFrase/FeedbackTerzaDomanda";
 import {ComplementoStatoInLuogo, ModalGrigliaComplementi} from "../components_primo_esercizio/FeedbackPrimaFrase/FeedbackQuartaDomanda";
-
+import {TabellaFiliam} from "../components_primo_esercizio/Feedbacks/FeedbackFiliam";
+import {TabellaAncilla} from "../components_primo_esercizio/Feedbacks/FeedbackAncilla";
+import {TabellaCanit} from "../components_primo_esercizio/Feedbacks/FeedbackCanit";
+import {TabellaAmat} from "../components_primo_esercizio/Feedbacks/FeedbackAmat";
+import {TabellaCercaDiz} from "../components_primo_esercizio/Feedbacks/FeedbackCercaDiz";
 import {ParolaTerzoErrore, SottoFraseTerzo, StyledModal, TextOption} from "../css_primo_modulo/components_primo_modulo";
-import {success, error, ModalCorrectAnswer, FineEsercizio} from "../message_components/message_to_answers";
+import {
+    success,
+    warning,
+    error,
+    ModalCorrectAnswer,
+    FineEsercizio,
+    ModalAmbiguousTranslation, FineEsercizioAmbiguo
+} from "../message_components/message_to_answers";
 import { useSelector, useDispatch } from 'react-redux';
-import { setTag, setColor, selectCurrentSentence, selectSentence} from "../../features/sentenceSlice";
+import { setTag, selectCurrentSentence, selectSentence, removeTag, selectArrayTag, addTag} from "../../features/sentenceSlice";
 import {ShowModalPredicatoVerbale} from "../../app/constants";
-import {selectModalPuella, selectModalSchola} from "../../features/modalSlice";
+import {selectModalPuella, selectModalSchola, selectModalAncilla, selectModalLuscinia} from "../../features/modalSlice";
 import {
     nextQuestion,
     prevQuestion,
@@ -37,7 +48,8 @@ import {
     selectShowClickableSentence,
     setStartTranslation,
     selectStartTranslation,
-    selectDisplayQuestion,
+    setIsAmbig,
+    selectDisplayQuestion, selectIsAmbig,
 } from "../../features/questionsSlice";
 import {selectStartExercise, selectCurrent, selectQuestions, selectQuestion, selectTagForDispatch, selectSottoDomanda, selectSopraDomanda,
     selectShowErrorZero,
@@ -46,6 +58,8 @@ import {selectStartExercise, selectCurrent, selectQuestions, selectQuestion, sel
     selectShowErrorThree,
     selectShowErrorFour,
     selectShowErrorFive,
+    selectShowErrorSix,
+    selectShowErrorSeven,
     selectContainerModals,
     selectLengthSetQuestion} from "../../features/questionsSlice";
 import {
@@ -58,17 +72,23 @@ import {
         StyledContainerCheckboxQuestion
 } from "../css_primo_modulo/components_primo_modulo"
 
-import {TabellaDominae} from "../components_primo_esercizio/FeedbackSecondaFrase/FeedbackDominae";
-import {TabellaRosam} from "../components_primo_esercizio/FeedbackSecondaFrase/FeedbackRosam";
+import {TabellaDominae} from "../components_primo_esercizio/Feedbacks/FeedbackDominae";
+import {TabellaRosam} from "../components_primo_esercizio/Feedbacks/FeedbackRosam";
 //import {TabellaDominae} from "../components_primo_esercizio/components_utilities/FeedbackSecondaDomanda";
 import {TabellaPulchrae} from "../components_primo_esercizio/components_utilities/FeedbackTerzaDomanda";
 import {ModalPuella} from "../components_primo_esercizio/FeedbackPrimaFrase/FeedbackQuintaDomanda";
 import {ModalSchola} from "../components_primo_esercizio/FeedbackPrimaFrase/FeedbackSestaDomanda";
 import {ButtonSuccessivo, ButtonPrecedente} from "./FrasePrimoModulo";
-import {TabellaPraebet} from "../components_primo_esercizio/FeedbackSecondaFrase/FeedbackPraebet";
-import {TabellaVerbiTransitiviIntransitivi} from "../components_primo_esercizio/FeedbackSecondaFrase/FeedbackIntransitivo";
+import {TabellaPraebet} from "../components_primo_esercizio/Feedbacks/FeedbackPraebet";
+import {
+    InformazioneTabellaTransitivi,
+    TabellaVerbiTransitiviIntransitivi
+} from "../components_primo_esercizio/Feedbacks/FeedbackIntransitivo";
 import useSound from "use-sound";
 import puellaestinschola from "../../audio/puellaestinschola.m4a";
+import {TabellaLuscinia} from "../components_primo_esercizio/Feedbacks/FeedbackLuscinia";
+import {TabellaBonam} from "../components_primo_esercizio/Feedbacks/FeedbackBonam";
+import {TabellaSostAdj} from "../components_primo_esercizio/Feedbacks/FeedbackSostAdj";
 
 function IniziaEsercizio(props){
     const question = useSelector(selectQuestion)
@@ -156,24 +176,36 @@ function ButtonBack(props) {
     //const word = TagForDispatch.word
     //const answer = TagForDispatch.answer
     //console.log(word, answer)
+    const arrayTag = useSelector(selectArrayTag)
+    console.log(arrayTag[arrayTag.length-1])
+    const tagToRemove = arrayTag[arrayTag.length-1]
+    console.log(tagToRemove)
     const TagForDispatch = useSelector(selectTagForDispatchForBack)
     function handleOnClick() {
     dispatch(prevQuestion({numberSentence: numberSentence}))
+    /**
 
     const word = TagForDispatch.word
     const answer = TagForDispatch.answer
-        console.log(word, answer, "165")
+        //console.log(word, answer, "165")
         if (numberSentence === 0) {
-            console.log(word, answer, "168", numberQuestion)
-                dispatch(setTag({numberSentence: numberSentence, valueOfBool: false, word: word, answer: answer}))
+            //console.log(word, answer, "168", numberQuestion)
+                dispatch(removeTag({numberSentence: numberSentence}))
+                dispatch(setTag({numberSentence: numberSentence, valueOfBool: false, word: tagToRemove[0].word, answer: tagToRemove[0].answer}))
 
         }
+
         if (numberSentence === 1){
-                dispatch(setTag({numberSentence: numberSentence, valueOfBool: false, word: word, answer: answer}))
+                dispatch(removeTag({numberSentence: numberSentence}))
+                dispatch(setTag({numberSentence: numberSentence, valueOfBool: false, word: tagToRemove[0].word, answer: tagToRemove[0].answer}))
 
         }
+        if (numberSentence === 2){
+                dispatch(removeTag({numberSentence: numberSentence}))
+                dispatch(setTag({numberSentence: numberSentence, valueOfBool: false, word: tagToRemove[0].word, answer: tagToRemove[0].answer}))
 
-
+        }
+        **/
     }
     return(
         numberQuestion === 0 && <ButtonIndietro disabled className="btn btn-back"onClick={handleOnClick}>Indietro</ButtonIndietro> ||
@@ -200,6 +232,8 @@ function OpzioneQuiz(props) {
 
     const question = useSelector(selectQuestion)
     const sentence = useSelector(selectSentence)
+    const arrayTag = useSelector(selectArrayTag)
+    console.log("arrayTag:", arrayTag)
     //console.log(sentence)
     const TagForDispatch = useSelector(selectTagForDispatch)
     //console.log(TagForDispatch)
@@ -224,8 +258,8 @@ function OpzioneQuiz(props) {
         if (numberSentence === 0) {
 
             if (e.currentTarget.value === question.risposta) {
-                play()
                 if (numeroDomandaAttuale < lunghezzaSetQuestion-1) {
+                    play()
                     //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1, "CIAOOOOOOOOOO")
                     success()
                     dispatch(setShowResult({valueOfBool: true}))
@@ -236,10 +270,10 @@ function OpzioneQuiz(props) {
                         answer: answer
                     }))
                     //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1)
-                    dispatch(nextQuestion({numberOfSetQuestions: numberOfSetQuestions}))
 
                 }
                 if (numeroDomandaAttuale === lunghezzaSetQuestion-1){
+                    play()
                     success()
                     dispatch(setStartTranslation({valueOfBool: true}))
                     dispatch(setTag({
@@ -249,6 +283,9 @@ function OpzioneQuiz(props) {
                         answer: answer
                     }))
                 }
+            dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))
             }
             else  {
 
@@ -263,9 +300,10 @@ function OpzioneQuiz(props) {
 
         }
         if (numberSentence === 1) {
-            play()
             if (e.currentTarget.value === question.risposta) {
+
                 if (numeroDomandaAttuale < lunghezzaSetQuestion-1) {
+                        play()
                         //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1, "CIAOOOOOOOOOO")
                         success()
                         dispatch(setShowResult({valueOfBool: true}))
@@ -276,10 +314,11 @@ function OpzioneQuiz(props) {
                             answer: answer
                         }))
                         //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1)
-                        dispatch(nextQuestion({numberOfSetQuestions: numberOfSetQuestions}))
+                        //dispatch(nextQuestion({numberOfSetQuestions: numberOfSetQuestions}))
 
                     }
                 if (numeroDomandaAttuale === lunghezzaSetQuestion-1){
+                    play()
                     success()
                     dispatch(setStartTranslation({valueOfBool: true}))
                     dispatch(setTag({
@@ -289,26 +328,190 @@ function OpzioneQuiz(props) {
                         answer: answer
                     }))
                 }
+                dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))
             }
             else  {
 
-                 if(e.currentTarget.value === "Genitivo Singolare") {
+                 if(e.currentTarget.value === "Genitivo Singolare" && numberQuestion === 5) {
+                     console.log(1)
+                    warning()
                     dispatch(setTag({
-                        numberSentence: 1,
+                        numberSentence: numberSentence,
                         valueOfBool: true,
                         word: "Dominae",
                         answer: "Genitivo Singolare"
                     }))
+                    dispatch(setShowResult({valueOfBool: true}))
+                    dispatch(setIsAmbig({valueOfBool: true}))
+                    dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))
                 }
-                 else {
-
-                     error()
-                     dispatch(setShowError({
-                         numberSentence: numberSentence,
-                         numberQuestion: numberQuestion,
-                         valueOfBool: true
-                     }))
+                 else if (e.currentTarget.value === "Dativo Singolare" && numberQuestion === 5){
+                     console.log(2)
+                     warning()
+                     dispatch(setTag({
+                        numberSentence: numberSentence,
+                        valueOfBool: true,
+                        word: "Dominae",
+                        answer: "Dativo Singolare"
+                    }))
+                    dispatch(setShowResult({valueOfBool: true}))
+                    dispatch(setIsAmbig({valueOfBool: true}))
+                    dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))
                  }
+                 else if (e.currentTarget.value === "Dativo Singolare" && numberQuestion === 6){
+                     console.log(2)
+                     warning()
+                     dispatch(setTag({
+                        numberSentence: numberSentence,
+                        valueOfBool: true,
+                        word: "filiae",
+                        answer: "Dativo Singolare"
+                    }))
+                    dispatch(setStartTranslation({valueOfBool: true}))
+                    dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))
+                 }
+                 else if(e.currentTarget.value === "Genitivo Singolare" && numberQuestion === 6) {
+                     console.log(1)
+                    warning()
+                    dispatch(setTag({
+                        numberSentence: numberSentence,
+                        valueOfBool: true,
+                        word: "filiae",
+                        answer: "Genitivo Singolare"
+                    }))
+                    dispatch(setStartTranslation({valueOfBool: true}))
+                    dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))
+                }
+
+
+                 else{
+                    error()
+                    dispatch(setShowError({
+                        numberSentence: numberSentence,
+                        numberQuestion: numberQuestion,
+                        valueOfBool: true
+                    }))
+                 }
+            }
+        }
+         if (numberSentence === 2) {
+            if (e.currentTarget.value === question.risposta) {
+
+                if (numeroDomandaAttuale < lunghezzaSetQuestion-1) {
+                        play()
+                        //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1, "CIAOOOOOOOOOO")
+                        success()
+                        dispatch(setShowResult({valueOfBool: true}))
+                        dispatch(setTag({
+                            numberSentence: numberSentence,
+                            valueOfBool: true,
+                            word: word,
+                            answer: answer
+                        }))
+                        //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1)
+                        //dispatch(nextQuestion({numberOfSetQuestions: numberOfSetQuestions}))
+
+                    }
+                if (numeroDomandaAttuale === lunghezzaSetQuestion-1){
+                    play()
+                    success()
+                    dispatch(setStartTranslation({valueOfBool: true}))
+                    dispatch(setTag({
+                        numberSentence: numberSentence,
+                        valueOfBool: true,
+                        word: word,
+                        answer: answer
+                    }))
+                }
+                dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))
+            }
+            else  {
+
+                 if(e.currentTarget.value === "Ablativo Plurale") {
+                     console.log(1)
+                    warning()
+                    dispatch(setTag({
+                        numberSentence: numberSentence,
+                        valueOfBool: true,
+                        word: word,
+                        answer: "Ablativo Plurale"
+                    }))
+                    dispatch(setStartTranslation({valueOfBool: true}))
+                }
+                 else if (e.currentTarget.value === "Dativo Plurale"){
+                     console.log(2)
+                     warning()
+                     dispatch(setTag({
+                        numberSentence: numberSentence,
+                        valueOfBool: true,
+                        word: word,
+                        answer: "Dativo Plurale"
+                    }))
+                    dispatch(setStartTranslation({valueOfBool: true}))
+                 }
+
+                 else{
+                    error()
+                    dispatch(setShowError({
+                        numberSentence: numberSentence,
+                        numberQuestion: numberQuestion,
+                        valueOfBool: true
+                    }))
+                 }
+            }
+        }
+         if (numberSentence === 3) {
+            if (e.currentTarget.value === question.risposta) {
+
+                if (numeroDomandaAttuale < lunghezzaSetQuestion-1) {
+                        play()
+                        //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1, "CIAOOOOOOOOOO")
+                        success()
+                        dispatch(setShowResult({valueOfBool: true}))
+                        dispatch(setTag({
+                            numberSentence: numberSentence,
+                            valueOfBool: true,
+                            word: word,
+                            answer: answer
+                        }))
+                        //console.log(numeroDomandaAttuale, lunghezzaSetQuestion-1)
+                        //dispatch(nextQuestion({numberOfSetQuestions: numberOfSetQuestions}))
+
+                    }
+                if (numeroDomandaAttuale === lunghezzaSetQuestion-1){
+                    play()
+                    success()
+                    dispatch(setStartTranslation({valueOfBool: true}))
+                    dispatch(setTag({
+                        numberSentence: numberSentence,
+                        valueOfBool: true,
+                        word: word,
+                        answer: answer
+                    }))
+                }
+                /**dispatch(addTag({   numberSentence: numberSentence,
+                                     word: word,
+                                     answer: e.currentTarget.value}))**/
+            }
+            else  {
+                error()
+                dispatch(setShowError({
+                    numberSentence: numberSentence,
+                    numberQuestion: numberQuestion,
+                    valueOfBool: true
+                }))
 
             }
         }
@@ -347,11 +550,15 @@ function ListaFeedbacks(){
     const showResult = useSelector(selectShowResult)
     const showErrorFour = useSelector(selectShowErrorFour)
     const showErrorFive = useSelector(selectShowErrorFive)
-
+    const showErrorSix = useSelector(selectShowErrorSix)
+    const showErrorSeven = useSelector(selectShowErrorSeven)
     const numberSentence = useSelector(selectCurrentSentence)
     const showModalPuella = useSelector(selectModalPuella)
     const showModalSchola = useSelector(selectModalSchola)
+    const showModalLuscinia = useSelector(selectModalLuscinia)
     const showTranslation = useSelector(selectStartTranslation)
+    const showModalAncilla = useSelector(selectModalAncilla)
+    const isAmbig = useSelector(selectIsAmbig)
     //const showPredicatoVerbale = useSelector(selectModalPredicatoVerbale)
 
     if (numberSentence === 0) {
@@ -367,7 +574,7 @@ function ListaFeedbacks(){
                 {showModalSchola || showErrorFive? <ModalSchola/> : null}
                 {showModalThree ? <ModalGrigliaComplementi/> : null}
                 {showTranslation ? <FineEsercizio/> : null}
-                {showResult ? <ModalCorrectAnswer/> : null}
+                {showResult || isAmbig ? <ModalCorrectAnswer/> : null}
             </>
         )
     }
@@ -377,8 +584,53 @@ function ListaFeedbacks(){
                 {showErrorZero ? <TabellaPraebet/> : null}
                 {showErrorOne ? <TabellaPraebet/> : null}
                 {showErrorTwo ?<TabellaVerbiTransitiviIntransitivi/> : null}
+                {showErrorThree ? <TabellaRosam/> : null}
+                {showErrorFour ? <TabellaDominae/> : null}
+                {showTranslation ? <FineEsercizioAmbiguo/> : null}
+                {showResult || isAmbig ? <ModalCorrectAnswer/> : null}
+            </>
+        )
+    }
+    /**
+    else if (numberSentence === 2){
+        return (
+            <>
+                {showErrorZero ? <TabellaAmat/> : null}
+                {showErrorOne ? <TabellaAmat/> : null}
+                {showErrorTwo ?<TabellaVerbiTransitiviIntransitivi/> : null}
                 {showErrorThree ? <TabellaDominae/> : null}
-                {showErrorFive ? <TabellaRosam/> : null}
+                {showErrorSix ? <TabellaFiliam/> : null}
+                {showModalAncilla ? <TabellaAncilla/> : null}
+                {showTranslation ? <FineEsercizio/> : null}
+                {showResult || isAmbig ? <ModalCorrectAnswer/> : null}
+            </>
+        )
+    }**/
+    else if (numberSentence === 2){
+        return (
+            <>
+                {showErrorZero ? <TabellaCanit/> : null}
+                {showErrorOne ? <TabellaCanit/> : null}
+                {showErrorTwo ? <InformazioneTabellaTransitivi/> : null}
+                {showErrorThree ? <TabellaAncilla/> : null}
+                {showModalLuscinia ? <TabellaLuscinia/> : null}
+                {showTranslation ? <FineEsercizioAmbiguo/> : null}
+                {showResult ? <ModalCorrectAnswer/> : null}
+            </>
+        )
+    }
+    else if (numberSentence === 3){
+        return (
+            <>
+                {showErrorZero ? <TabellaAmat/> : null}
+                {showErrorOne ? <TabellaAmat/> : null}
+                {showErrorTwo ? <TabellaVerbiTransitiviIntransitivi/> : null}
+                {showErrorThree ? <TabellaDominae/> : null}
+                {showErrorFour ? <TabellaDominae/> : null}
+                {showErrorFive ? <TabellaBonam/> : null}
+                {showErrorSix  ? <TabellaCercaDiz/> : null}
+                {showErrorSeven  ? <TabellaSostAdj/> : null}
+                {showTranslation ? <FineEsercizio/> : null}
                 {showResult ? <ModalCorrectAnswer/> : null}
             </>
         )

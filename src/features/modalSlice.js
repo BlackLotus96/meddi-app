@@ -2,6 +2,7 @@
   import {slice} from "./counterSlice";
   import {createSelector} from "reselect";
   import {selectQuestions, selectSetQuestions} from "./questionsSlice";
+  //import {items} from "../components/primo_modulo/translation/costants_first_sentence";
 
 export const sliceModal = createSlice({
   name: 'modal',
@@ -9,6 +10,8 @@ export const sliceModal = createSlice({
         modalPredicatoVerbale: false,
         modalPuella: false,
         modalSchola: false,
+        modalAncilla: false,
+        modalLuscinia: false,
         verbiTransitivi: [
                         {
                             header: "Mangiare",
@@ -229,6 +232,7 @@ export const sliceModal = createSlice({
                                     ]
                         }
                     ],
+
   },
   reducers: {
     setModalPredicatoVerbale: (state, action) => {
@@ -239,14 +243,22 @@ export const sliceModal = createSlice({
     },
     setModalSchola: (state, action) => {
         state.modalSchola = action.payload.valueOfBool
+    },
+    setModalAncilla: (state, action) => {
+        state.modalAncilla = action.payload.valueOfBool
+    },
+    setModalLuscinia: (state, action) => {
+        state.modalLuscinia = action.payload.valueOfBool
     }
   },
 });
 
-export const { setModalPredicatoVerbale, setModalPuella, setModalSchola } = sliceModal.actions;
+export const { setModalPredicatoVerbale, setModalPuella, setModalSchola, setModalAncilla, setModalLuscinia} = sliceModal.actions;
 
 export const selectModalPredicatoVerbale = state => state.modaler.modalPredicatoVerbale
 export const selectModalPuella = state => state.modaler.modalPuella
+export const selectModalAncilla = state => state.modaler.modalAncilla
+export const selectModalLuscinia = state => state.modaler.modalLuscinia
 export const selectModalSchola = state => state.modaler.modalSchola
 export const selectVerbiDiStato = state => state.modaler.verbiDiStato
 export const selectVerbiDiMoto = state => state.modaler.verbiDiMoto

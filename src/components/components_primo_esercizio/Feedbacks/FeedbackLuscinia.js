@@ -1,42 +1,33 @@
 import {useDispatch, useSelector} from "react-redux";
-import {
-
-    selectShowErrorTwo,
-
-    setShowError,
-
-} from "../../../features/questionsSlice";
+import {selectShowErrorThree, setShowError} from "../../../features/questionsSlice";
 import {StyledModal} from "../../css_primo_modulo/components_primo_modulo";
 import {
-
-    GrigliaVerbiTransitiviIntransitivi
+    GrigliaLuscinia,
 } from "../../primo_modulo/error_components/GriglieOutput";
 import React from "react";
-import {Collapse} from "antd";
+import {selectModalAncilla, selectModalLuscinia, setModalLuscinia} from "../../../features/modalSlice";
 
-export function TabellaVerbiTransitiviIntransitivi(){
-    const showErrorTwo = useSelector(selectShowErrorTwo)
-
+export function TabellaLuscinia(){
+    const showModalLuscinia = useSelector(selectModalLuscinia)
     const dispatch = useDispatch()
 
-
-
 function onClickArea(){
-    dispatch(setShowError({numberSentence: 1, numberQuestion: 2, valueOfBool: false}))
+
+    dispatch(setModalLuscinia({valueOfBool: false}))
 }
 
     return (
 
             <StyledModal
-                title="Verbi Transitivi e Intransitivi"
-                visible={showErrorTwo}
+                title="Tabella Luscinia, ae"
+                visible={showModalLuscinia}
                 onCancel={onClickArea}
                 width={1200}
                 bodyStyle={{height:"auto"}}
                 footer={null}
             >
 
-                    <GrigliaVerbiTransitiviIntransitivi/>
+                    <GrigliaLuscinia/>
 
             </StyledModal>
 

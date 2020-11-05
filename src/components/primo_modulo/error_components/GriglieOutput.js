@@ -5,7 +5,12 @@ import {
     StyledPanel,
     StyledCollapse, StyledDivider, StyledRadioGroup, RadioButtonSwap, TextOption
 } from "../../css_primo_modulo/components_primo_modulo";
-import {selectCurrent, selectShowErrorOne, selectShowErrorZero} from "../../../features/questionsSlice";
+import {
+    selectCurrent,
+    selectSetQuestions, selectShowErrorFour,
+    selectShowErrorOne, selectShowErrorThree,
+    selectShowErrorZero
+} from "../../../features/questionsSlice";
 import {
     selectVerbiDiStato,
     selectVerbiDiMoto,
@@ -240,6 +245,385 @@ export const GrigliaVerboPraebet = (props) => {
         </>
     )
 }
+export const GrigliaAmatSenzaTraduzione = (props) => {
+    const showErrorZero = useSelector(selectShowErrorZero)
+    const [isColoredRadice, setIsColoredRadice] = useState(false)
+    const [isColoredVocale, setIsColoredVocale] = useState(false)
+    const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
+
+
+    let objColor = {
+        coloreRadice: "blue",
+        coloreVocale: "red",
+        coloreDesinenza: "green"
+    }
+    function DivPersona(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivVocaleTematica(props){
+        return (
+            <DivRow  style = {{marginRight: "10px"}}  color = {objColor.coloreVocale} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }function DivDesinenza(props){
+        return (
+            <DivRow  color = {objColor.coloreDesinenza} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    return(
+            <>
+                <ContainerGrid>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreRadice} onChange={() => setIsColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreVocale} onChange={() => setIsColoredVocale(!isColoredVocale)}><TextOption color={objColor.coloreVocale}>Vocale Tematica</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza} onChange={() => setIsColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+
+                </ContainerGrid>
+                <ContainerGrid>
+                    <ColonnaTabella span={10}>
+                        <RigaTabella  header="true">SINGOLARE</RigaTabella>
+                        <StyledDivider />
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"O"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"S"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella  parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"T"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+
+                    <ColonnaTabella span={10}>
+                        <RigaTabella showErrorZero = {showErrorZero} header="true">PLURALE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"MUS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"TIS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella showErrorZero = {showErrorZero} parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"NT"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+                </ContainerGrid>
+            </>
+    )
+}
+export const GrigliaVerboAmat = (props) => {
+    const numberSentence = useSelector(selectSetQuestions)
+    const showErrorZero = useSelector(selectShowErrorZero)
+    const [showColumn0, setShowColumn0] = useState(false)
+    const [showColumn1, setShowColumn1] = useState(false)
+    const [showColumn2, setShowColumn2] = useState(false)
+    const [showColumn3, setShowColumn3] = useState(false)
+    const [isColoredRadice, setIscColoredRadice] = useState(false)
+    const [isColoredVocale, setIscColoredVocale] = useState(false)
+    const [isColoredDesinenza, setIscColoredDesinenza] = useState(false)
+    let objColor = {
+        coloreRadice: "blue",
+        coloreVocale: "red",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivVocaleTematica(props){
+        return (
+            <DivRow  style = {{marginRight: "10px"}}  color = {objColor.coloreVocale} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }function DivDesinenza(props){
+        return (
+            <DivRow  color = {objColor.coloreDesinenza} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+
+    return (<>
+                <ContainerGrid>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreRadice}onChange={() => setIscColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreVocale}onChange={() => setIscColoredVocale(!isColoredVocale)}><TextOption color={objColor.coloreVocale}>Vocale Tematica</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza}onChange={() => setIscColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+
+                </ContainerGrid>
+                <ContainerGrid>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn0 ? <PlusOutlined onClick={()=>setShowColumn0(false)}/> : <CloseOutlined onClick={()=>setShowColumn0(true)}/>}</RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn1 ? <PlusOutlined onClick={()=>setShowColumn1(false)}/> : <CloseOutlined onClick={()=>setShowColumn1(true)}/>}</RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn2 ? <PlusOutlined onClick={()=>setShowColumn2(false)}/> : <CloseOutlined onClick={()=>setShowColumn2(true)}/>}</RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn3 ? <PlusOutlined onClick={()=>setShowColumn3(false)}/> : <CloseOutlined onClick={()=>setShowColumn3(true)}/>}</RigaTabella></ColonnaTabella>
+                </ContainerGrid>
+                <ContainerGrid>
+                    <ColonnaTabella span={4} hide={showColumn0.toString()}>
+                        <RigaTabella numberSentence = {numberSentence} header="true">SINGOLARE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"O"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"S"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella  parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A "}/>
+                            <DivDesinenza  isColored={isColoredDesinenza} testo = {"T"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+                    <ColonnaTabella span={4} hide={showColumn1.toString()}>
+                        <RigaTabella header="true">TRADUZIONE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Io AMO</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Tu AMI</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Egli AMA</RigaTabella>
+                    </ColonnaTabella>
+                    <ColonnaTabella span={4} hide={showColumn2.toString()}>
+                        <RigaTabella numberSentence = {numberSentence}  showErrorZero = {showErrorZero} header="true">PLURALE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"MUS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"TIS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella numberSentence = {numberSentence} showErrorZero = {showErrorZero} parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"AM "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"A "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"NT"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+                    <ColonnaTabella span={4} hide={showColumn3.toString()}>
+                        <RigaTabella header="true">TRADUZIONE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Noi AMIAMO</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Voi AMATE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Essi AMANO</RigaTabella>
+                    </ColonnaTabella>
+                </ContainerGrid>
+        </>
+    )
+}
+export const GrigliaCanitSenzaTraduzione = (props) => {
+    const showErrorZero = useSelector(selectShowErrorZero)
+    const [isColoredRadice, setIsColoredRadice] = useState(false)
+    const [isColoredVocale, setIsColoredVocale] = useState(false)
+    const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
+    let objColor = {
+        coloreRadice: "blue",
+        coloreVocale: "red",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivVocaleTematica(props){
+        return (
+            <DivRow  style = {{marginRight: "10px"}}  color = {objColor.coloreVocale} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }function DivDesinenza(props){
+        return (
+            <DivRow  color = {objColor.coloreDesinenza} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    return(
+            <>
+                <ContainerGrid>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreRadice}onChange={() => setIsColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreVocale}onChange={() => setIsColoredVocale(!isColoredVocale)}><TextOption color={objColor.coloreVocale}>Vocale Tematica</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza}onChange={() => setIsColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+
+                </ContainerGrid>
+                <ContainerGrid>
+                    <ColonnaTabella span={10}>
+                        <RigaTabella showErrorZero = {showErrorZero} header="true">SINGOLARE</RigaTabella>
+                        <StyledDivider />
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"O"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"S"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella showErrorZero = {showErrorZero} parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"T"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+
+                    <ColonnaTabella span={10}>
+                        <RigaTabella header="true">PLURALE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"MUS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"TIS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"U"}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"NT"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+                </ContainerGrid>
+            </>
+    )
+}
+export const GrigliaVerboCanit = (props) => {
+    const showErrorZero = useSelector(selectShowErrorZero)
+    const [showColumn0, setShowColumn0] = useState(false)
+    const [showColumn1, setShowColumn1] = useState(false)
+    const [showColumn2, setShowColumn2] = useState(false)
+    const [showColumn3, setShowColumn3] = useState(false)
+    const [isColoredRadice, setIscColoredRadice] = useState(false)
+    const [isColoredVocale, setIscColoredVocale] = useState(false)
+    const [isColoredDesinenza, setIscColoredDesinenza] = useState(false)
+    let objColor = {
+        coloreRadice: "blue",
+        coloreVocale: "red",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivVocaleTematica(props){
+        return (
+            <DivRow  style = {{marginRight: "10px"}}  color = {objColor.coloreVocale} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }function DivDesinenza(props){
+        return (
+            <DivRow  color = {objColor.coloreDesinenza} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+
+    return (<>
+                <ContainerGrid>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreRadice}onChange={() => setIscColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreVocale}onChange={() => setIscColoredVocale(!isColoredVocale)}><TextOption color={objColor.coloreVocale}>Vocale Tematica</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={6}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza}onChange={() => setIscColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+
+                </ContainerGrid>
+                <ContainerGrid>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn0 ? <PlusOutlined onClick={()=>setShowColumn0(false)}/> : <CloseOutlined onClick={()=>setShowColumn0(true)}/>}</RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn1 ? <PlusOutlined onClick={()=>setShowColumn1(false)}/> : <CloseOutlined onClick={()=>setShowColumn1(true)}/>}</RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn2 ? <PlusOutlined onClick={()=>setShowColumn2(false)}/> : <CloseOutlined onClick={()=>setShowColumn2(true)}/>}</RigaTabella></ColonnaTabella>
+                    <ColonnaTabella span={4}><RigaTabella>{showColumn3 ? <PlusOutlined onClick={()=>setShowColumn3(false)}/> : <CloseOutlined onClick={()=>setShowColumn3(true)}/>}</RigaTabella></ColonnaTabella>
+                </ContainerGrid>
+                <ContainerGrid>
+                    <ColonnaTabella span={4} hide={showColumn0.toString()}>
+                        <RigaTabella showErrorZero = {showErrorZero} header="true">SINGOLARE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"O"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN"}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"S"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella showErrorZero = {showErrorZero} parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I "}/>
+                            <DivDesinenza  isColored={isColoredDesinenza} testo = {"T"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+                    <ColonnaTabella span={4} hide={showColumn1.toString()}>
+                        <RigaTabella header="true">TRADUZIONE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Io CANTO</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Tu CANTI</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Egli CANTA</RigaTabella>
+                    </ColonnaTabella>
+                    <ColonnaTabella span={4} hide={showColumn2.toString()}>
+                        <RigaTabella header="true">PLURALE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"MUS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"I "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"TIS"}/>
+                        </RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella parola="true">
+                            <DivRadice isColored = {isColoredRadice} testo={"CAN "}/>
+                            <DivVocaleTematica isColored ={isColoredVocale} testo = {"U "}/>
+                            <DivDesinenza isColored={isColoredDesinenza} testo = {"NT"}/>
+                        </RigaTabella>
+                    </ColonnaTabella>
+                    <ColonnaTabella span={4} hide={showColumn3.toString()}>
+                        <RigaTabella header="true">TRADUZIONE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Noi CANTIAMO</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Voi CANTATE</RigaTabella>
+                        <StyledDivider/>
+                        <RigaTabella traduzione="true">Essi CANTANO</RigaTabella>
+                    </ColonnaTabella>
+                </ContainerGrid>
+        </>
+    )
+}
+
 
 export const GrigliaVerboEssere = (props) => {
     const [showColumn0, setShowColumn0] = useState(false)
@@ -375,7 +759,9 @@ export const GrigliaVerbiIntransitivi = () =>  {
         </ColonnaTabella>
         )
 }
-export const GrigliaDominae = (props) => {
+
+
+export const GrigliaAncilla = (props) => {
     const [isColoredRadice, setIscColoredRadice] = useState(false)
     const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
     let objColor = {
@@ -412,31 +798,372 @@ export const GrigliaDominae = (props) => {
         <ColonnaTabella index={0} hide={showColumn0.toString()} span={3}>
             <RigaTabella header="true">CASI</RigaTabella>
             <RigaTabella rosso="true" caso="true">NOMINATIVO</RigaTabella>
-            <RigaTabella rosso="true" caso="true" caso="true">GENITIVO</RigaTabella>
-            <RigaTabella rosso="true" caso="true" caso="true">DATIVO</RigaTabella>
+            <RigaTabella caso="true">GENITIVO</RigaTabella>
+            <RigaTabella caso="true">DATIVO</RigaTabella>
             <RigaTabella caso="true">ACCUSATIVO</RigaTabella>
             <RigaTabella caso="true">VOCATIVO</RigaTabella>
             <RigaTabella caso="true">ABLATIVO</RigaTabella>
         </ColonnaTabella>
         <ColonnaTabella index={1} hide={showColumn1.toString()} span={6}>
             <RigaTabella header="true">SINGOLARE</RigaTabella>
-            <RigaTabella parola="true">
-                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+            <RigaTabella rosso="true" parola="true">
+                <DivRadice rosso="true" isColored = {isColoredRadice} testo={"ANCILL"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
             </RigaTabella>
-            <RigaTabella rosso="true" parola="true">
-                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
             </RigaTabella>
-            <RigaTabella rosso="true" parola="true">
-                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
             </RigaTabella>
             <RigaTabella parola="true">
-                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"AM"}/>
             </RigaTabella>
             <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={2} hide={showColumn2.toString()} span={6}>
+            <RigaTabella  header="true">PLURALE</RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"ARUM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"ANCILL"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        </ContainerGrid>
+        </>
+    )
+}
+export const CercaDizSostAgg = (props) => {
+    return(
+    <ContainerGrid>
+        <ColonnaTabella index={0} span={3}>
+            <RigaTabella header="true">GENERI AGGETTIVO</RigaTabella>
+            <RigaTabella caso="true">Maschile</RigaTabella>
+            <RigaTabella caso="true">Femminile</RigaTabella>
+            <RigaTabella caso="true">Neutro</RigaTabella>
+        </ColonnaTabella>
+    </ContainerGrid>
+    )
+}
+export const GrigliaLuscinia = (props) => {
+    const [isColoredRadice, setIscColoredRadice] = useState(false)
+    const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
+    let objColor = {
+        coloreRadice: "blue",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivDesinenza(props) {
+        return (
+            <DivRow style={{marginRight: "10px"}} color={objColor.coloreDesinenza} isColored={props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    const [showColumn0, setShowColumn0] = useState(false)
+    const [showColumn1, setShowColumn1] = useState(false)
+    const [showColumn2, setShowColumn2] = useState(false)
+
+
+    return(
+        <>
+        <ContainerGrid>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreRadice} onChange={() => setIscColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza} onChange={() => setIsColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+            <ColonnaTabella span={3}><RigaTabella>{showColumn0 ? <PlusOutlined onClick={()=>setShowColumn0(false)}/> : <CloseOutlined onClick={()=>setShowColumn0(true)}/>}</RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={6}><RigaTabella>{showColumn1 ? <PlusOutlined onClick={()=>setShowColumn1(false)}/> : <CloseOutlined onClick={()=>setShowColumn1(true)}/>}</RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={6}><RigaTabella>{showColumn2 ? <PlusOutlined onClick={()=>setShowColumn2(false)}/> : <CloseOutlined onClick={()=>setShowColumn2(true)}/>}</RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+        <ColonnaTabella index={0} hide={showColumn0.toString()} span={3}>
+            <RigaTabella header="true">CASI</RigaTabella>
+            <RigaTabella rosso="true" caso="true">NOMINATIVO</RigaTabella>
+            <RigaTabella caso="true">GENITIVO</RigaTabella>
+            <RigaTabella caso="true">DATIVO</RigaTabella>
+            <RigaTabella caso="true">ACCUSATIVO</RigaTabella>
+            <RigaTabella caso="true">VOCATIVO</RigaTabella>
+            <RigaTabella caso="true">ABLATIVO</RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1} hide={showColumn1.toString()} span={6}>
+            <RigaTabella header="true">SINGOLARE</RigaTabella>
+            <RigaTabella rosso="true" parola="true">
+                <DivRadice rosso="true" isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={2} hide={showColumn2.toString()} span={6}>
+            <RigaTabella  header="true">PLURALE</RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"ARUM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"LUSCINI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        </ContainerGrid>
+        </>
+    )
+}
+
+export const GrigliaSostAdj = (props) => {
+    const [isColoredAggettivo, setIscColoredAggettivo] = useState(false)
+    const [isColoredSostantivo, setIsColoredSostantivo] = useState(false)
+    let objColor = {
+        coloreAggettivo: "blue",
+        coloreSostantivo: "red"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreAggettivo} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivDesinenza(props) {
+        return (
+            <DivRow style={{marginRight: "10px"}} color={objColor.coloreSostantivo} isColored={props.isColored}>{props.testo}</DivRow>
+        )
+    }
+
+
+
+    return(
+        <>
+        <ContainerGrid>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreAggettivo} onChange={() => setIscColoredAggettivo(!isColoredAggettivo)}><TextOption color={objColor.coloreAggettivo}>Aggettivo</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreSostantivo} onChange={() => setIsColoredSostantivo(!isColoredSostantivo)}><TextOption color={objColor.coloreSostantivo}>Sostantivo</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+        <ColonnaTabella index={0}  span={3}>
+            <RigaTabella header="true">CASI</RigaTabella>
+            <RigaTabella caso="true">NOMINATIVO</RigaTabella>
+            <RigaTabella caso="true">GENITIVO</RigaTabella>
+            <RigaTabella caso="true">DATIVO</RigaTabella>
+            <RigaTabella rosso = "true" caso="true">ACCUSATIVO</RigaTabella>
+            <RigaTabella caso="true">VOCATIVO</RigaTabella>
+            <RigaTabella caso="true">ABLATIVO</RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1} span={6}>
+            <RigaTabella header="true">SINGOLARE</RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONA "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINA"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONAE "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINAE"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONAE "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINAE"}/>
+            </RigaTabella>
+            <RigaTabella rosso="true" parola="true">
+                <DivRadice rosso="true" isColored = {isColoredAggettivo} testo={"BONAM "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINAM"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONA "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINA"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONA "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINA"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={2}  span={6}>
+            <RigaTabella  header="true">PLURALE</RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONAE "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINAE"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONARUM "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINARUM"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONIS "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINIS"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONAS "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINAS"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONAE "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINAE"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice  isColored = {isColoredAggettivo} testo={"BONA "}/>
+                <DivDesinenza isColored={isColoredSostantivo} testo={"DOMINA"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        </ContainerGrid>
+        </>
+    )
+}
+export const GrigliaConcordanza = () => {
+    return (
+        <>
+            <ContainerGrid>
+                <ColonnaTabella index={0}  span={3}>
+                        <RigaTabella ></RigaTabella>
+                        <RigaTabella aggettivo="true">AGGETTIVO MASCHILE</RigaTabella>
+                        <RigaTabella aggettivo="true">AGGETTIVO FEMMINILE</RigaTabella>
+                        <RigaTabella aggettivo="true">AGGETTIVO NEUTRO</RigaTabella>
+                </ColonnaTabella>
+                <ColonnaTabella index={1}  span={3}>
+                        <RigaTabella sostantivo="true">SOSTANTIVO MASCHILE</RigaTabella>
+                        <RigaTabella declinazione="true">Prima Declinazione</RigaTabella>
+                </ColonnaTabella>
+                <ColonnaTabella index={2}  span={3}>
+                        <RigaTabella sostantivo="true">SOSTANTIVO FEMMINILE</RigaTabella>
+                        <RigaTabella> </RigaTabella>
+                        <RigaTabella declinazione="true">Seconda Declinazione</RigaTabella>
+                </ColonnaTabella>
+                <ColonnaTabella index={3}  span={3}>
+                        <RigaTabella sostantivo="true">SOSTANTIVO NEUTRO</RigaTabella>
+                        <RigaTabella> </RigaTabella>
+                        <RigaTabella> </RigaTabella>
+                        <RigaTabella declinazione="true">Seconda Declinazione Neutra</RigaTabella>
+                </ColonnaTabella>
+            </ContainerGrid>
+        </>
+    )
+}
+export const GrigliaDominae = (props) => {
+    const showErrorThree = useSelector(selectShowErrorThree)
+    const showErrorFour = useSelector(selectShowErrorFour)
+    const numberSentence = useSelector(selectSetQuestions)
+    const [isColoredRadice, setIscColoredRadice] = useState(false)
+    const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
+    let objColor = {
+        coloreRadice: "blue",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivDesinenza(props) {
+        return (
+            <DivRow style={{marginRight: "10px"}} color={objColor.coloreDesinenza} isColored={props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    const [showColumn0, setShowColumn0] = useState(false)
+    const [showColumn1, setShowColumn1] = useState(false)
+    const [showColumn2, setShowColumn2] = useState(false)
+
+
+    return(
+        <>
+        <ContainerGrid>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreRadice} onChange={() => setIscColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza} onChange={() => setIsColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+            <ColonnaTabella span={3}><RigaTabella>{showColumn0 ? <PlusOutlined onClick={()=>setShowColumn0(false)}/> : <CloseOutlined onClick={()=>setShowColumn0(true)}/>}</RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={6}><RigaTabella>{showColumn1 ? <PlusOutlined onClick={()=>setShowColumn1(false)}/> : <CloseOutlined onClick={()=>setShowColumn1(true)}/>}</RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={6}><RigaTabella>{showColumn2 ? <PlusOutlined onClick={()=>setShowColumn2(false)}/> : <CloseOutlined onClick={()=>setShowColumn2(true)}/>}</RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+        <ColonnaTabella index={0} hide={showColumn0.toString()} span={3}>
+            <RigaTabella header="true">CASI</RigaTabella>
+            <RigaTabella caso="true">NOMINATIVO</RigaTabella>
+            <RigaTabella caso="true">GENITIVO</RigaTabella>
+            <RigaTabella caso="true">DATIVO</RigaTabella>
+            <RigaTabella caso="true">ACCUSATIVO</RigaTabella>
+            <RigaTabella rosso={showErrorFour} caso="true">VOCATIVO</RigaTabella>
+            <RigaTabella caso="true">ABLATIVO</RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1} hide={showColumn1.toString()} span={6}>
+            <RigaTabella header="true">SINGOLARE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella   parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella  rosso={showErrorThree}  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AM"}/>
+            </RigaTabella>
+            <RigaTabella rosso={showErrorFour} parola="true">
                 <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
             </RigaTabella>
@@ -446,9 +1173,9 @@ export const GrigliaDominae = (props) => {
             </RigaTabella>
         </ColonnaTabella>
         <ColonnaTabella index={2} hide={showColumn2.toString()} span={6}>
-            <RigaTabella rosso="true" header="true">PLURALE</RigaTabella>
-            <RigaTabella rosso = "true" parola="true">
-                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+            <RigaTabella header="true">PLURALE</RigaTabella>
+            <RigaTabella    parola="true">
+                <DivRadice  isColored = {isColoredRadice} testo={"DOMIN"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
             </RigaTabella>
             <RigaTabella parola="true">
@@ -463,8 +1190,8 @@ export const GrigliaDominae = (props) => {
                 <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"AS"}/>
             </RigaTabella>
-            <RigaTabella parola="true">
-                <DivRadice isColored = {isColoredRadice} testo={"DOMIN"}/>
+            <RigaTabella   parola="true">
+                <DivRadice  isColored = {isColoredRadice} testo={"DOMIN"}/>
                 <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
             </RigaTabella>
             <RigaTabella parola="true">
@@ -512,7 +1239,7 @@ export const GrigliaRosam = (props) => {
         <ContainerGrid>
         <ColonnaTabella index={0} hide={showColumn0.toString()} span={3}>
             <RigaTabella header="true">CASI</RigaTabella>
-            <RigaTabella >NOMINATIVO</RigaTabella>
+            <RigaTabella caso="true" >NOMINATIVO</RigaTabella>
             <RigaTabella caso="true">GENITIVO</RigaTabella>
             <RigaTabella caso="true">DATIVO</RigaTabella>
             <RigaTabella rosso = "true" caso="true">ACCUSATIVO</RigaTabella>
@@ -577,6 +1304,107 @@ export const GrigliaRosam = (props) => {
         </>
     )
 }
+export const GrigliaFiliam = (props) => {
+    const [isColoredRadice, setIscColoredRadice] = useState(false)
+    const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
+    let objColor = {
+        coloreRadice: "blue",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivDesinenza(props) {
+        return (
+            <DivRow style={{marginRight: "10px"}} color={objColor.coloreDesinenza} isColored={props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    const [showColumn0, setShowColumn0] = useState(false)
+    const [showColumn1, setShowColumn1] = useState(false)
+    const [showColumn2, setShowColumn2] = useState(false)
+
+
+    return(
+        <>
+        <ContainerGrid>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreRadice} onChange={() => setIscColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza} onChange={() => setIsColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+            <ColonnaTabella span={3}><RigaTabella>{showColumn0 ? <PlusOutlined onClick={()=>setShowColumn0(false)}/> : <CloseOutlined onClick={()=>setShowColumn0(true)}/>}</RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={6}><RigaTabella>{showColumn1 ? <PlusOutlined onClick={()=>setShowColumn1(false)}/> : <CloseOutlined onClick={()=>setShowColumn1(true)}/>}</RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={6}><RigaTabella>{showColumn2 ? <PlusOutlined onClick={()=>setShowColumn2(false)}/> : <CloseOutlined onClick={()=>setShowColumn2(true)}/>}</RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+        <ColonnaTabella index={0} hide={showColumn0.toString()} span={3}>
+            <RigaTabella header="true">CASI</RigaTabella>
+            <RigaTabella caso="true">NOMINATIVO</RigaTabella>
+            <RigaTabella caso="true">GENITIVO</RigaTabella>
+            <RigaTabella caso="true">DATIVO</RigaTabella>
+            <RigaTabella rosso = "true" caso="true">ACCUSATIVO</RigaTabella>
+            <RigaTabella caso="true">VOCATIVO</RigaTabella>
+            <RigaTabella caso="true">ABLATIVO</RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1} hide={showColumn1.toString()} span={6}>
+            <RigaTabella header="true">SINGOLARE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella  parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella rosso = "true" parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={2} hide={showColumn2.toString()} span={6}>
+            <RigaTabella header="true">PLURALE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"ARUM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"FILI"}/>
+                <DivDesinenza isColored={isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        </ContainerGrid>
+        </>
+    )
+}
 export const GrigliaPulchrae = (props) => {
     const [showColumn0, setShowColumn0] = useState(false)
     const [showColumn1, setShowColumn1] = useState(false)
@@ -602,8 +1430,8 @@ export const GrigliaPulchrae = (props) => {
         </ColonnaTabella>
         <ColonnaTabella index={1} hide={showColumn1.toString()} span={6}>
             <RigaTabella header="true">SINGOLARE</RigaTabella>
-            <RigaTabella parola="true">Pulchr ae</RigaTabella>
             <RigaTabella parola="true">Pulchr a</RigaTabella>
+            <RigaTabella parola="true">Pulchr ae</RigaTabella>
             <RigaTabella parola="true">Pulchr ae</RigaTabella>
             <RigaTabella parola="true">Pulchr am</RigaTabella>
             <RigaTabella parola="true">Pulchr a</RigaTabella>
@@ -927,8 +1755,251 @@ export const GrigliaComplementi = () => {
     </ContainerGrid>
     )
 }
+export const GrigliaBonamPlurale = () => {
+    const [isColoredRadice, setIscColoredRadice] = useState(false)
+    const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
+    let spans = {
+        spanRighe: 6,
+        spanHeader: 4
+    }
+    let objColor = {
+        coloreRadice: "blue",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivDesinenza(props) {
+        return (
+            <DivRow style={{marginRight: "10px"}} color={objColor.coloreDesinenza} isColored={props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    return(
+    <>
+        <ContainerGrid>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreRadice} onChange={() => setIscColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza} onChange={() => setIsColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+        <ColonnaTabella index={0}  span={spans.spanHeader}>
+            <RigaTabella header="true">CASI</RigaTabella>
+            <RigaTabella caso="true">NOMINATIVO</RigaTabella>
+            <RigaTabella caso="true">GENITIVO</RigaTabella>
+            <RigaTabella caso="true">DATIVO</RigaTabella>
+            <RigaTabella caso="true">ACCUSATIVO</RigaTabella>
+            <RigaTabella caso="true">VOCATIVO</RigaTabella>
+            <RigaTabella caso="true">ABLATIVO</RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={2}  span={spans.spanRighe}>
+            <RigaTabella style = {{color: "deepskyblue"}} header="true">MASCHILE PLURALE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"I"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"ORUM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"OS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"I"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1}  span={spans.spanRighe}>
+            <RigaTabella style = {{color: "deeppink"}}  header="true">FEMMINILE PLURALE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"ARUM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"AS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1}  span={spans.spanRighe}>
+            <RigaTabella header="true">NEUTRO PLURALE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"ORUM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"IS"}/>
+            </RigaTabella>
+            </ColonnaTabella>
+        </ContainerGrid>
+    </>
+        )
+}
+export const GrigliaBonamSingolare = () => {
+    const [isColoredRadice, setIscColoredRadice] = useState(false)
+    const [isColoredDesinenza, setIsColoredDesinenza] = useState(false)
+     let spans = {
+        spanRighe: 6,
+        spanHeader: 4
+    }
+    let objColor = {
+        coloreRadice: "blue",
+        coloreDesinenza: "green"
+    }
+    function DivRadice(props){
+        return (
+            <DivRow style = {{marginRight: "10px"}}   color = {objColor.coloreRadice} isColored = {props.isColored}>{props.testo}</DivRow>
+        )
+    }
+    function DivDesinenza(props) {
+        return (
+            <DivRow style={{marginRight: "10px"}} color={objColor.coloreDesinenza} isColored={props.isColored}>{props.testo}</DivRow>
+        )
+    }
 
-
+    return(
+        <>
+        <ContainerGrid>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreRadice} onChange={() => setIscColoredRadice(!isColoredRadice)}><TextOption color={objColor.coloreRadice}>Radice</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+            <ColonnaTabella span={12}><RigaTabella><CheckboxModal color={objColor.coloreDesinenza} onChange={() => setIsColoredDesinenza(!isColoredDesinenza)}><TextOption color={objColor.coloreDesinenza}>Desinenza</TextOption></CheckboxModal></RigaTabella></ColonnaTabella>
+        </ContainerGrid>
+        <ContainerGrid>
+        <ColonnaTabella index={0}  span={spans.spanHeader}>
+            <RigaTabella header="true">CASI</RigaTabella>
+            <RigaTabella caso="true">NOMINATIVO</RigaTabella>
+            <RigaTabella caso="true">GENITIVO</RigaTabella>
+            <RigaTabella caso="true">DATIVO</RigaTabella>
+            <RigaTabella caso="true">ACCUSATIVO</RigaTabella>
+            <RigaTabella caso="true">VOCATIVO</RigaTabella>
+            <RigaTabella caso="true">ABLATIVO</RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={2}  span={spans.spanRighe}>
+            <RigaTabella style = {{color: "deepskyblue"}}  header="true">MASCHILE SINGOLARE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"US"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"I"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"O"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"UM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"E"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"O"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1}  span={spans.spanRighe}>
+            <RigaTabella style = {{color: "deeppink"}}  header="true">FEMMINILE SINGOLARE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"AE"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"AM"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        <ColonnaTabella index={1}  span={spans.spanRighe}>
+            <RigaTabella header="true">NEUTRO SINGOLARE</RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+            <RigaTabella parola="true">
+                <DivRadice isColored = {isColoredRadice} testo={"BON"}/>
+                <DivDesinenza isColored = {isColoredDesinenza} testo={"A"}/>
+            </RigaTabella>
+        </ColonnaTabella>
+        </ContainerGrid>
+        </>
+    )
+}
 
 
 

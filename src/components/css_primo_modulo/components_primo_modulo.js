@@ -101,9 +101,9 @@ color: ${({color, isColored}) => {
 `
 export const RigaTabella = styled(Row)`
 
-  font-family: OpenDyslexic-Regular;
-
-  background: ${({header, caso, parola, traduzione, showErrorZero}) => {
+    font-family: OpenDyslexic-Regular;
+    
+    background: ${({header, caso, parola, traduzione, showErrorZero}) => {
             if (showErrorZero) return "orangered"
             else if (header) return "lightgray"
             else if(caso) return "lightgray"    
@@ -135,10 +135,10 @@ export const RigaTabella = styled(Row)`
       if(header) return "bold"
         else return "bolder"
 }};
-color: ${({rosso, blu, verde}) => {               
-            if (rosso) return "red"
-            else if(blu) return "blue"
-            else if(verde) return "green"    
+color: ${({blu, verde, rosso, sostantivo, declinazione, aggettivo}) => {               
+            if (rosso || sostantivo) return "red"
+            else if(blu || aggettivo) return "blue"
+            else if(verde || declinazione) return "green"    
             else return "black"
           }};
 display: flex;

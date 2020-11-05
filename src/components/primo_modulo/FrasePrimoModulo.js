@@ -17,7 +17,7 @@ import {
 
 import {ParolaStyle} from "../css_primo_modulo/components_primo_modulo";
 import { useSelector, useDispatch } from 'react-redux';
-import {setModalPredicatoVerbale, setModalPuella, setModalSchola} from "../../features/modalSlice";
+import {setModalPredicatoVerbale, setModalPuella, setModalSchola, setModalAncilla, setModalLuscinia} from "../../features/modalSlice";
 import {
     nextSentence,
     prevSentence, selectCurrentSentence,
@@ -32,7 +32,7 @@ import {
     prevSetQuestion,
     setZeroCurrentQuestion,
     selectShowClickableSentence,
- selectShowErrorZero, setShowError, setShowModal, selectQuestion, selectStartExercise
+    selectShowErrorZero, setShowError, setShowModal, selectQuestion, selectStartExercise, setStartTranslation
 } from "../../features/questionsSlice";
 import {AudioComponent} from "../../../src/components/components_primo_esercizio/AudioComponents/AudioComponent"
 import {DndComponentOptions} from "./translation/DragDropComponents";
@@ -56,8 +56,9 @@ const divideIfComplement = (objectWords, word) => {
 
         let objectWords = sentence.objectWords
         const dispatch = useDispatch()
+        console.log("OBJECTWORDS", objectWords)
         function handleOnClick(e){
-            console.log(e.currentTarget.value)
+            //console.log(e.currentTarget.value)
             if(numberSentence===0) {
                 if (e.currentTarget.value === "Singolare") {
                     dispatch(setShowError({numberSentence: 0, numberQuestion: 0, valueOfBool: true}))
@@ -84,26 +85,26 @@ const divideIfComplement = (objectWords, word) => {
                     dispatch(setShowError({numberSentence: 1, numberQuestion: 2, valueOfBool: true}))
                 }
                 else if (e.currentTarget.value === "Soggetto"){
-                    dispatch(setShowError({numberSentence: 1, numberQuestion: 3, valueOfBool: true}))
+                    dispatch(setShowError({numberSentence: 1, numberQuestion: 4, valueOfBool: true}))
                 }
                 else if (e.currentTarget.value === "Accusativo"){
-                    dispatch(setShowError({numberSentence: 1, numberQuestion: 5, valueOfBool: true}))
+                    dispatch(setShowError({numberSentence: 1, numberQuestion: 3, valueOfBool: true}))
                 }
-                else if (e.currentTarget.value === "Dativo Singolare"){
-                    dispatch(setTag({
-                        numberSentence: 1,
-                        valueOfBool: false,
-                        word: "Dominae",
-                        answer: "Dativo Singolare"
-                    }))
+                else if (e.currentTarget.value === "Dativo Singolare" && props.index === 0){
                     dispatch(setTag({
                         numberSentence: 1,
                         valueOfBool: true,
                         word: "Dominae",
                         answer: "Genitivo Singolare"
                     }))
+                    dispatch(setTag({
+                        numberSentence: 1,
+                        valueOfBool: false,
+                        word: "Dominae",
+                        answer: "Dativo Singolare"
+                    }))
                 }
-                else if (e.currentTarget.value === "Genitivo Singolare"){
+                else if (e.currentTarget.value === "Genitivo Singolare" && props.index === 0){
                     dispatch(setTag({
                         numberSentence: 1,
                         valueOfBool: true,
@@ -114,10 +115,165 @@ const divideIfComplement = (objectWords, word) => {
                         numberSentence: 1,
                         valueOfBool: false,
                         word: "Dominae",
+                        answer: "Genitivo Singolare"
+                    }))
+                }
+                else if (e.currentTarget.value === "Dativo Singolare" && props.index === 4){
+                    dispatch(setTag({
+                        numberSentence: 1,
+                        valueOfBool: true,
+                        word: "filiae",
+                        answer: "Genitivo Singolare"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 1,
+                        valueOfBool: false,
+                        word: "filiae",
+                        answer: "Dativo Singolare"
+                    }))
+                }
+                else if (e.currentTarget.value === "Genitivo Singolare" && props.index === 4){
+                    dispatch(setTag({
+                        numberSentence: 1,
+                        valueOfBool: true,
+                        word: "filiae",
+                        answer: "Dativo Singolare"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 1,
+                        valueOfBool: false,
+                        word: "filiae",
                         answer: "Genitivo Singolare"
                     }))
                 }
 
+            }
+            /**else if(numberSentence===2){
+                if (e.currentTarget.value === "Singolare"){
+                    dispatch(setShowError({numberSentence: 2, numberQuestion: 0, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "3 Persona"){
+                    dispatch(setShowError({numberSentence: 2, numberQuestion: 1, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Transitivo"){
+                    dispatch(setShowError({numberSentence: 2, numberQuestion: 2, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Soggetto"){
+                    dispatch(setModalAncilla({valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Accusativo"){
+                    dispatch(setShowError({numberSentence: 2, numberQuestion: 6, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Dativo Singolare" && props.index === 0){
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: true,
+                        word: "Dominae",
+                        answer: "Genitivo Singolare"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: false,
+                        word: "Dominae",
+                        answer: "Dativo Singolare"
+                    }))
+                }
+                else if (e.currentTarget.value === "Genitivo Singolare" && props.index === 0){
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: true,
+                        word: "Dominae",
+                        answer: "Dativo Singolare"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: false,
+                        word: "Dominae",
+                        answer: "Genitivo Singolare"
+                    }))
+                }
+                else if (e.currentTarget.value === "Dativo Singolare" && props.index === 3){
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: true,
+                        word: "dominae",
+                        answer: "Genitivo Singolare"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: false,
+                        word: "dominae",
+                        answer: "Dativo Singolare"
+                    }))
+                }
+                else if (e.currentTarget.value === "Genitivo Singolare" && props.index === 3){
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: true,
+                        word: "dominae",
+                        answer: "Dativo Singolare"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: false,
+                        word: "dominae",
+                        answer: "Genitivo Singolare"
+                    }))
+                }
+            }**/
+            else if(numberSentence===2){
+                if (e.currentTarget.value === "Singolare"){
+                    dispatch(setShowError({numberSentence: 2, numberQuestion: 0, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "3 Persona"){
+                    dispatch(setShowError({numberSentence: 2, numberQuestion: 1, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Transitivo"){
+                    dispatch(setShowError({numberSentence: 2, numberQuestion: 2, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Soggetto"){
+                    console.log("EHY SONO SOGGETTO")
+                    dispatch(setModalLuscinia({valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Ablativo Plurale"){
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: true,
+                        word: "ancillis",
+                        answer: "Dativo Plurale"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: false,
+                        word: "ancillis",
+                        answer: "Ablativo Plurale"
+                    }))
+                }
+                else if (e.currentTarget.value === "Dativo Plurale"){
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: true,
+                        word: "ancillis",
+                        answer: "Ablativo Plurale"
+                    }))
+                    dispatch(setTag({
+                        numberSentence: 2,
+                        valueOfBool: false,
+                        word: "ancillis",
+                        answer: "Dativo Plurale"
+                    }))
+                }
+            }
+            else if(numberSentence===3){
+                 if (e.currentTarget.value === "Plurale"){
+                    dispatch(setShowError({numberSentence: 3, numberQuestion: 0, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "3 Persona"){
+                    dispatch(setShowError({numberSentence: 3, numberQuestion: 1, valueOfBool: true}))
+                }
+                else if (e.currentTarget.value === "Transitivo"){
+                    dispatch(setShowError({numberSentence: 3, numberQuestion: 2, valueOfBool: true}))
+                }
             }
 
         }
@@ -166,6 +322,7 @@ const divideIfComplement = (objectWords, word) => {
             dispatch(setZeroCurrentQuestion())
             dispatch(prevSetQuestion())
             dispatch(setStartExercise({valueOfBool: false}))
+            dispatch(setStartTranslation({valueOfBool: false}))
         }
         return(
             numberSentence >= 1 && <ButtonPrecSucc style={{borderRadius: 10}}
@@ -189,6 +346,7 @@ const divideIfComplement = (objectWords, word) => {
             dispatch(nextSetQuestion())
             dispatch(setZeroCurrentQuestion())
             dispatch(setStartExercise({valueOfBool: false}))
+            dispatch(setStartTranslation({valueOfBool: false}))
         }
         return(
             <ButtonPrecSucc style={{borderRadius: 10}}
@@ -255,7 +413,7 @@ const divideIfComplement = (objectWords, word) => {
 
                                 <Parola
                                         link="link"
-                                        key={index}
+                                        index={index}
                                         objectWords = {objectWords}
                                         word={arrayWord[0]}/>
 
