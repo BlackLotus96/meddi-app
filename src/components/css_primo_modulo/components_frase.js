@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Tag, Button } from 'antd';
+import {Tag, Button, Card} from 'antd';
 import {useSelector} from "react-redux";
 import {selectIsTranslated} from "../../features/sentenceSlice";
 
@@ -99,6 +99,14 @@ margin-top: 100px;
 display: flex;
 
 `
+
+export const StyledCard = styled(Card)`
+.ant-card-body {
+  display: flex;
+  flex-direction: column;
+  
+}
+`
 export const StyledButton = styled(Button)` 
 position:relative;
 overflow: hidden;
@@ -110,14 +118,19 @@ display: ${({visible}) => {
         if(visible === false) return "none"
 }};
 background: ${({color}) => {
-       return color
+        if (color === "sintattica") return "red"
+        if (color === "POS") return "blue"
+        if (color === "morfologica") return "green" 
 }};
 
 &:hover, &:focus, &:active{
   
-  background: ${({color}) => {
-       return color
+background: ${({color}) => {
+        if (color === "sintattica") return "red"
+        if (color === "POS") return "blue"
+        if (color === "morfologica") return "green" 
 }};
+
 &:after{
   content: "";
   position: absolute;

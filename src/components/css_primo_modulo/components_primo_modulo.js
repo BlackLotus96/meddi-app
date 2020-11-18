@@ -88,7 +88,6 @@ flex-direction: column;
 align-items: center;
 font-size: larger;
 margin-bottom: 50px;
-
 `
 
 export const DivRow = styled.div`

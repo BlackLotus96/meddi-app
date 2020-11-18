@@ -31,6 +31,18 @@ export function TabellaComplementiLuogo(){
 function onClickArea(){
     dispatch(setShowError({numberSentence: 0, numberQuestion: 2, valueOfBool: false}))
 }
+function Collapse() {
+        return(
+            <Collapse ghost>
+                            <StyledPanel header={"RICORDA"}>
+                                <Collapse ghost>
+                                    <StyledPanel header={<Text color="black" text="VERBI DI MOTO" isHeader={true}/>}><Text color="black" text="MOTO A LUOGO oppure MOTO DA LUOGO"/></StyledPanel>
+                                    <StyledPanel header={<Text color="black" text="VERBI DI STATO" isHeader={true}/>}><Text color="black" text="STATO IN LUOGO"/></StyledPanel>
+                                </Collapse>
+                            </StyledPanel>
+            </Collapse>
+        )
+}
 
     return (
 
@@ -40,14 +52,7 @@ function onClickArea(){
                 onCancel={onClickArea}
                 width={1200}
                 bodyStyle={{height:"auto"}}
-                footer={<Collapse ghost>
-                            <StyledPanel header={"RICORDA"}>
-                                <Collapse ghost>
-                                    <StyledPanel header={<Text color="black" text="VERBI DI MOTO" isHeader={true}/>}><Text color="black" text="MOTO A LUOGO oppure MOTO DA LUOGO"/></StyledPanel>
-                                    <StyledPanel header={<Text color="black" text="VERBI DI STATO" isHeader={true}/>}><Text color="black" text="STATO IN LUOGO"/></StyledPanel>
-                                </Collapse>
-                            </StyledPanel>
-                        </Collapse>}
+                footer={false}
             >
 
                     <GrigliaVerbiStatoMoto/>

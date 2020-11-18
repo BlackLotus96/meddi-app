@@ -85,7 +85,7 @@ const divideIfComplement = (objectWords, word) => {
                     dispatch(setShowError({numberSentence: 1, numberQuestion: 2, valueOfBool: true}))
                 }
                 else if (e.currentTarget.value === "Soggetto"){
-                    dispatch(setShowError({numberSentence: 1, numberQuestion: 4, valueOfBool: true}))
+                    dispatch(setModalAncilla({valueOfBool: true}))
                 }
                 else if (e.currentTarget.value === "Accusativo"){
                     dispatch(setShowError({numberSentence: 1, numberQuestion: 3, valueOfBool: true}))

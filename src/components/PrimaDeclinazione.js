@@ -1,16 +1,14 @@
-import React, {useRef, useState} from 'react';
-
-import GetFrase from "./Frase"
-import GetFrasePrimoModulo, {SentenceClickable} from "./primo_modulo/FrasePrimoModulo"
-import IniziaEsercizio, {ContainerModals} from "./primo_modulo/InterfacciaPrimoEsercizio";
-import IniziaEsercizioDue from "./primo_modulo/InterfacciaSecondoEsercizio";
+import React from 'react';
+import { Card, Tag} from 'antd';
+import GetFrasePrimoModulo from "./primo_modulo/FrasePrimoModulo"
+import IniziaEsercizio from "./primo_modulo/InterfacciaPrimoEsercizio";
 import {useSelector} from "react-redux";
-import {selectContainerModals, selectStartTranslation} from "../features/questionsSlice";
+import {selectStartTranslation} from "../features/questionsSlice";
 import {selectCurrentSentence, selectSentence} from "../features/sentenceSlice";
 import {StyledDivider} from "./css_primo_modulo/components_primo_modulo";
-import {Divider} from "antd";
-import Text from "antd/es/typography/Text";
+
 import {DndComponentOptions} from "./primo_modulo/translation/DragDropComponents";
+import {StyledButton, StyledCard} from "./css_primo_modulo/components_frase";
     /**
     function rendersToSwitch(numberSentence){
 
@@ -35,11 +33,18 @@ import {DndComponentOptions} from "./primo_modulo/translation/DragDropComponents
 
         return (
             <div className="container-frase-e-esercizi" >
-                {<StyledDivider  orientation="center">Analisi della frase "{sentence.sentence}"</StyledDivider>}
-                <div>
-                    <GetFrasePrimoModulo />
-                </div>
+                {<StyledDivider orientation="center">Analisi della frase "{sentence.sentence}"</StyledDivider>}
+                <div style={{flexDirection: "column", display: "flex"}}>
+                {
+                    <StyledCard bordered={true} title="Legenda Tag" style={{ width: 200 }}>
+                        <Tag style = {{fontFamily: "OpenDyslexic-Regular", height: "30px", marginBottom: "20px", borderRadius: "20px"}} color="#FF0000"> Sintassi </Tag>
+                        <Tag style = {{fontFamily: "OpenDyslexic-Regular", height: "30px", marginBottom: "20px", borderRadius: "20px"}} color="#0032D5"> Parte del discorso </Tag>
+                        <Tag style = {{fontFamily: "OpenDyslexic-Regular", height: "30px", marginBottom: "20px", borderRadius: "20px"}} color="#1B9C11"> Morfologia </Tag>
+                    </StyledCard>
+                }
 
+                    <GetFrasePrimoModulo/>
+            </div>
                 {<IniziaEsercizio/>}
                 {<StyledDivider orientation="center">Traduzione della frase "{sentence.sentence}"</StyledDivider>}
                 {showTranslation ? <DndComponentOptions />  : null}

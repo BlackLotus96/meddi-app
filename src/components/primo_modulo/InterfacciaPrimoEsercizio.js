@@ -585,6 +585,7 @@ function ListaFeedbacks(){
                 {showErrorOne ? <TabellaPraebet/> : null}
                 {showErrorTwo ?<TabellaVerbiTransitiviIntransitivi/> : null}
                 {showErrorThree ? <TabellaRosam/> : null}
+                {showModalAncilla ? <TabellaAncilla/> : null}
                 {showErrorFour ? <TabellaDominae/> : null}
                 {showTranslation ? <FineEsercizioAmbiguo/> : null}
                 {showResult || isAmbig ? <ModalCorrectAnswer/> : null}

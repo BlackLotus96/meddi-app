@@ -18,9 +18,9 @@ export function AudioComponent(props){
         return (
             <div>{
                 isPlaying ?
-                    <img onClick={onClick} src={stopIcon} width={40} height={40}/>
+                    <div style={{fontSize:"large", display: "flex", flexDirection: "column"}}> Stop! <img onClick={onClick} src={stopIcon} width={40} height={40}/> </div>
                     :
-                    <PlayCircleOutlined style={{fontSize: 40}} onClick={onClick}/>
+                    <div style={{fontSize:"large", display: "flex", flexDirection: "column"}}> Ascolta frase!<PlayCircleOutlined style={{fontSize: 40}} onClick={onClick}/> </div>
             }</div>
             )
 }

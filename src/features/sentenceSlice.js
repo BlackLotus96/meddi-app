@@ -19,7 +19,7 @@ export const sliceSentence = createSlice({
                         tag: {
                                 "Nominativo":{
                                                 nomeTag: "Nominativo",
-                                                color: "darkmagenta",
+                                                color: "morfologica",
                                                 visible: false,
                                              }
                             },
@@ -29,44 +29,19 @@ export const sliceSentence = createSlice({
                         }
 
                     },
-                    est:{
-                        isComplement: false,
-                        tag:{
-                                "Singolare":    {
-                                                    nomeTag: "Singolare",
-                                                    color: "red",
-                                                    visible: false,
-
-                                                },
-                                "Predicato Verbale": {
-                                                    nomeTag: "Predicato Verbale",
-                                                    color: "green",
-                                                    visible: false,
-
-                                                    },
-                                "Verbo di Stato": {
-                                                    nomeTag:"Verbo di Stato",
-                                                    color: "blue",
-                                                    visible: false,
-
-                                                 }
-
-                        },
-                        parteDiscorso:"Predicato Verbale",
-                    },
                     in_scholā:{
                         isComplement: true,
                         tag:{
                             "Ablativo":{
                                                 nomeTag: "Ablativo",
-                                                color: "darkmagenta",
+                                                color: "morfologica",
                                                 visible: false,
                                                 rightPart: true,
 
                                             },
                             "Stato in Luogo":{
                                                 nomeTag: "Stato in Luogo",
-                                                color: "orange",
+                                                color: "sintattica",
                                                 visible: false,
 
                                             }
@@ -87,6 +62,31 @@ export const sliceSentence = createSlice({
 
                             }
                         }
+                    },
+                    est:{
+                        isComplement: false,
+                        tag:{
+                                "Singolare":    {
+                                                    nomeTag: "Singolare",
+                                                    color: "morfologica",
+                                                    visible: false,
+
+                                                },
+                                "Predicato Verbale": {
+                                                    nomeTag: "Predicato Verbale",
+                                                    color: "sintattica",
+                                                    visible: false,
+
+                                                    },
+                                "Verbo di Stato": {
+                                                    nomeTag:"Verbo di Stato",
+                                                    color: "POS",
+                                                    visible: false,
+
+                                                 }
+
+                        },
+                        parteDiscorso:"Predicato Verbale",
                     }
                 }},
             {
@@ -104,17 +104,17 @@ export const sliceSentence = createSlice({
                         tag:{
                             "Dativo Singolare":{
                                             nomeTag: "Dativo Singolare",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Complemento di Termine":{
                                             nomeTag: "Complemento di Termine",
-                                            color: "orange",
+                                            color: "POS",
                                             visible: false
                             },
                              "Genitivo Singolare":{
                                             nomeTag: "Genitivo Singolare",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                         },
@@ -125,12 +125,12 @@ export const sliceSentence = createSlice({
                         tag:{
                             "Nominativo Singolare":{
                                             nomeTag: "Nominativo Singolare",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Soggetto":{
                                             nomeTag: "Soggetto",
-                                            color: "orange",
+                                            color: "sintattica",
                                             visible: false
                             }
                         },
@@ -141,12 +141,12 @@ export const sliceSentence = createSlice({
                         tag:{
                             "Accusativo":{
                                             nomeTag: "Accusativo",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Complemento Oggetto":{
                                             nomeTag: "Complemento Oggetto",
-                                            color: "orange",
+                                            color: "sintattica",
                                             visible: false
                             }
                         },
@@ -156,22 +156,22 @@ export const sliceSentence = createSlice({
                         tag:{
                             "3 Persona":{
                                             nomeTag: "3 Persona",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Predicato Verbale":{
                                             nomeTag: "Predicato Verbale",
-                                            color: "darkmagenta",
+                                            color: "POS",
                                             visible: false
                             },
                             "Singolare":{
                                             nomeTag: "Singolare",
-                                            color: "orange",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Transitivo":{
                                             nomeTag: "Transitivo",
-                                            color: "orange",
+                                            color: "POS",
                                             visible: false
                             }
 
@@ -182,17 +182,17 @@ export const sliceSentence = createSlice({
                         tag: {
                             "Dativo Singolare":{
                                             nomeTag: "Dativo Singolare",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Complemento di Termine":{
                                             nomeTag: "Complemento di Termine",
-                                            color: "orange",
+                                            color: "sintattica",
                                             visible: false
                             },
                              "Genitivo Singolare":{
                                             nomeTag: "Genitivo Singolare",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                         }
@@ -330,12 +330,12 @@ export const sliceSentence = createSlice({
                         tag:{
                             "Nominativo Singolare":{
                                             nomeTag: "Nominativo Singolare",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Soggetto":{
                                             nomeTag: "Soggetto",
-                                            color: "orange",
+                                            color: "sintattica",
                                             visible: false
                             }
                         }
@@ -345,22 +345,22 @@ export const sliceSentence = createSlice({
                         tag:{
                             "3 Persona":{
                                             nomeTag: "3 Persona",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Predicato Verbale":{
                                             nomeTag: "Predicato Verbale",
-                                            color: "darkmagenta",
+                                            color: "POS",
                                             visible: false
                             },
                             "Singolare":{
                                             nomeTag: "Singolare",
-                                            color: "orange",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Transitivo":{
                                             nomeTag: "Transitivo",
-                                            color: "orange",
+                                            color: "POS",
                                             visible: false
                             }
                         }
@@ -370,22 +370,22 @@ export const sliceSentence = createSlice({
                         tag:{
                             "Dativo Plurale":{
                                             nomeTag: "Dativo Plurale",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false,
                             },
                             "Complemento di Vantaggio":{
                                             nomeTag: "Complemento di Vantaggio",
-                                            color: "orange",
+                                            color: "sintattica",
                                             visible: false
                             },
                              "Ablativo Plurale":{
                                             nomeTag: "Ablativo Plurale",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false,
                             },
                             "Complemento Causa":{
                                             nomeTag: "Complemento Causa",
-                                            color: "darkmagenta",
+                                            color: "sintattica",
                                             visible: false
                             },
                         }
@@ -402,17 +402,17 @@ export const sliceSentence = createSlice({
                         tag: {
                             "Accusativo": {
                                             nomeTag: "Accusativo",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false,
                             },
                             "Aggettivo": {
                                             nomeTag: "Aggettivo",
-                                            color: "darkmagenta",
+                                            color: "POS",
                                             visible: false,
                             },
                             "Femminile": {
                                             nomeTag: "Femminile",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false,
                             }
 
@@ -422,17 +422,17 @@ export const sliceSentence = createSlice({
                         tag:{
                              "Accusativo":{
                                             nomeTag: "Accusativo",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false,
                             },
                             "Sostantivo":{
                                             nomeTag: "Sostantivo",
-                                            color: "darkmagenta",
+                                            color: "POS",
                                             visible: false,
                             },
                             "Femminile":{
                                             nomeTag: "Femminile",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false,
                             },
                         }
@@ -442,12 +442,12 @@ export const sliceSentence = createSlice({
                         tag: {
                             "Nominativo Singolare":{
                                             nomeTag: "Nominativo Singolare",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Soggetto":{
                                             nomeTag: "Soggetto",
-                                            color: "orange",
+                                            color: "sintattica",
                                             visible: false
                             }
                         }
@@ -456,22 +456,22 @@ export const sliceSentence = createSlice({
                         tag:{
                             "3 Persona":{
                                             nomeTag: "3 Persona",
-                                            color: "darkmagenta",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Predicato Verbale":{
                                             nomeTag: "Predicato Verbale",
-                                            color: "darkmagenta",
+                                            color: "POS",
                                             visible: false
                             },
                             "Plurale":{
                                             nomeTag: "Plurale",
-                                            color: "orange",
+                                            color: "morfologica",
                                             visible: false
                             },
                             "Transitivo":{
                                             nomeTag: "Transitivo",
-                                            color: "orange",
+                                            color: "POS",
                                             visible: false
                             }
                         }

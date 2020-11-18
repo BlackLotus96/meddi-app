@@ -12,17 +12,17 @@ export const items =
                 {columnParent: "column-1", id: "item-4", content: 'LA MATRONA'}
             ],
             [
-                {columnParent: "column-2", id: "item-5", content: 'È'},
-                {columnParent: "column-2", id: "item-6", content: 'STAVA'},
-                {columnParent: "column-2", id: "item-7", content: 'ERA'},
-                {columnParent: "column-2", id: "item-8", content: 'VIENE'}
+                {columnParent: "column-2", id: "item-5", content: 'NELLA SCUOLA'},
+                {columnParent: "column-2", id: "item-6", content: 'IN CASA'},
+                {columnParent: "column-2", id: "item-7", content: 'DALLA SCUOLA'},
+                {columnParent: "column-2", id: "item-8", content: 'DALLA CASA'}
             ],
             [
-                {columnParent: "column-3", id: "item-9", content: 'NELLA SCUOLA'},
-                {columnParent: "column-3", id: "item-10", content: 'IN CASA'},
-                {columnParent: "column-3", id: "item-11", content: 'DALLA SCUOLA'},
-                {columnParent: "column-3", id: "item-12", content: 'DALLA CASA'}
-            ]
+                {columnParent: "column-3", id: "item-9", content: 'È'},
+                {columnParent: "column-3", id: "item-10", content: 'STAVA'},
+                {columnParent: "column-3", id: "item-11", content: 'ERA'},
+                {columnParent: "column-3", id: "item-12", content: 'VIENE'}
+            ],
         ],
         [
             [
@@ -56,38 +56,6 @@ export const items =
                 {columnParent: "column-5", id: "item-20", content: 'PER LE FIGLIE'}
             ]
         ],
-        /**[
-            [
-                {columnParent: "column-1", id: "item-1", content: 'ALLA PADRONA'},
-                {columnParent: "column-1", id: "item-2", content: 'DELLA PADRONA'},
-                {columnParent: "column-1", id: "item-3", content: 'LE PADRONE'},
-                {columnParent: "column-1", id: "item-4", content: 'PER LA PADRONA'}
-            ],
-            [
-                {columnParent: "column-2", id: "item-5", content: 'LA SERVA'},
-                {columnParent: "column-2", id: "item-6", content: 'PER LA SERVA'},
-                {columnParent: "column-2", id: "item-7", content: 'CON LA SERVA'},
-                {columnParent: "column-2", id: "item-8", content: 'OH SERVA'}
-            ],
-            [
-                {columnParent: "column-3", id: "item-9", content: 'AMA'},
-                {columnParent: "column-3", id: "item-10", content: 'AMAVA'},
-                {columnParent: "column-3", id: "item-11", content: 'TIENE'},
-                {columnParent: "column-3", id: "item-12", content: 'OFFRE'}
-            ],
-            [
-                {columnParent: "column-4", id: "item-13", content: 'ALLA PADRONA'},
-                {columnParent: "column-4", id: "item-14", content: 'DELLA PADRONA'},
-                {columnParent: "column-4", id: "item-15", content: 'LE PADRONE\''},
-                {columnParent: "column-4", id: "item-16", content: 'PER LA PADRONA\''}
-            ],
-            [
-                {columnParent: "column-5", id: "item-17", content: 'LA FIGLIA'},
-                {columnParent: "column-5", id: "item-18", content: 'ALLA FIGLIA'},
-                {columnParent: "column-5", id: "item-19", content: 'UNA FIGLIA'},
-                {columnParent: "column-5", id: "item-20", content: 'OH FIGLIA'}
-            ]
-        ],**/
         [
             [
                 {columnParent: "column-1", id: "item-1", content: 'L\'USIGNOLO'},
@@ -96,16 +64,16 @@ export const items =
                 {columnParent: "column-1", id: "item-4", content: 'A CAUSA DELL\'USIGNOLO'}
             ],
             [
-                {columnParent: "column-2", id: "item-5", content: 'CANTA'},
-                {columnParent: "column-2", id: "item-6", content: 'CANTAVA'},
-                {columnParent: "column-2", id: "item-7", content: 'CANTO\''},
-                {columnParent: "column-2", id: "item-8", content: 'CANTANO'}
+                {columnParent: "column-2", id: "item-5", content: 'ALLE SERVE'},
+                {columnParent: "column-2", id: "item-6", content: 'PER LE SERVE'},
+                {columnParent: "column-2", id: "item-7", content: 'CON LE SERVE'},
+                {columnParent: "column-2", id: "item-8", content: 'DELLE SERVE'}
             ],
             [
-                {columnParent: "column-3", id: "item-9", content: 'ALLE SERVE'},
-                {columnParent: "column-3", id: "item-10", content: 'PER LE SERVE'},
-                {columnParent: "column-3", id: "item-11", content: 'CON LE SERVE'},
-                {columnParent: "column-3", id: "item-12", content: 'DELLE SERVE'}
+                {columnParent: "column-3", id: "item-9", content: 'CANTA'},
+                {columnParent: "column-3", id: "item-10", content: 'CANTAVA'},
+                {columnParent: "column-3", id: "item-11", content: 'CANTO\''},
+                {columnParent: "column-3", id: "item-12", content: 'CANTANO'}
             ],
         ],
         [
@@ -140,8 +108,8 @@ export const translated =
     [
         [
             {columnParent: "column-1", id: "item-1", content: 'LA RAGAZZA'},
-            {columnParent: "column-2", id: "item-5", content: 'È'},
-            {columnParent: "column-3", id: "item-9", content: 'NELLA SCUOLA'},
+            {columnParent: "column-3", id: "item-9", content: 'È'},
+            {columnParent: "column-2", id: "item-5", content: 'NELLA SCUOLA'},
         ],
         [
             {columnParent: "column-2", id: "item-5", content: 'LA SERVA'},
@@ -150,17 +118,10 @@ export const translated =
             {columnParent: "column-3", id: "item-9", content: 'UNA ROSA'},
             {columnParent: "column-5", id: "item-17", content: 'ALLA FIGLIA'},
         ],
-       /** [
-            {id: "item-5", content: 'LA SERVA'},
-            {id: "item-2", content: 'DELLA PADRONA'},
-            {id: "item-9", content: 'AMA'},
-            {id: "item-17", content: 'LA FIGLIA'},
-            {id: "item-14", content: 'DELLA PADRONA'},
-        ],**/
         [
             {columnParent: "column-1", id: "item-1", content: 'L\'USIGNOLO'},
-            {columnParent: "column-2", id: "item-5", content: 'CANTA'},
-            {columnParent: "column-3", id: "item-10", content: 'PER LE SERVE'},
+            {columnParent: "column-3", id: "item-9", content: 'CANTA'},
+            {columnParent: "column-2", id: "item-6", content: 'PER LE SERVE'},
         ],
         [
             {columnParent: "column-4", id: "item-13", content: 'LE SERVE'},
@@ -175,17 +136,17 @@ export const translated =
 export const columns ={
     0:{
         ["column-1"]: {
-            name: 'PUELLA',
+            name: 'PUELLĂ',
             items: items[0][0],
             translatePlace: false
         },
         ["column-2"]: {
-            name: 'EST',
+            name: 'IN SCHOLĀ',
             items: items[0][1],
             translatePlace: false
         },
         ["column-3"]: {
-            name: 'IN SCHOLA',
+            name: 'EST',
             items: items[0][2],
             translatePlace: false
         }
@@ -252,15 +213,15 @@ export const columns ={
             translatePlace: false
         },
         ["column-2"]: {
-            name: 'CANIT',
+            name: 'ANCILLIS',
             items: items[2][1],
             translatePlace: false
         },
         ["column-3"]: {
-            name: 'ANCILLIS',
+            name: 'CANIT',
             items: items[2][2],
             translatePlace: false
-        }
+        },
     },
     3:{
         ["column-1"]: {

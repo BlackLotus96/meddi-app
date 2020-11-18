@@ -10,7 +10,6 @@ import logger from 'redux-logger'
 const middleware =[...getDefaultMiddleware(), logger]
 export default configureStore({
     reducer: {
-        counter: counterReducer,
         sentencer: sentenceReducer,
         questioner: questionReducer,
         modaler: modalReducer
