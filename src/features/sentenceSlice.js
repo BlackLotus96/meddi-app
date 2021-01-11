@@ -9,8 +9,8 @@ export const sliceSentence = createSlice({
         current: 0,
         sentences: [
             {
+                sentence:"Puellă in scholā est",
                 arrayTag: [],
-                sentence:"Puellă est in scholā",
                 sentenceLength: 3,
                 isTranslated: false,
                 objectWords:{
@@ -90,8 +90,8 @@ export const sliceSentence = createSlice({
                     }
                 }},
             {
-                arrayTag: [],
                 sentence: "Dominae ancillă rosam praebet filiae",
+                arrayTag: [],
                 otherTranslations: [
                                         "La serva offre una rosa alla padrona della figlia",
                                         "La serva della figlia offre una rosa alla padrona",
@@ -198,126 +198,8 @@ export const sliceSentence = createSlice({
                         }
                     }
             }},
-            /**{
-                arrayTag: [],
-                sentence: "Dominae ancillă amat dominae filiam",
-                sentenceLength: 5,
-                isTranslated: false,
-                objectWords: {
-                    Dominae:{
-                        isComplement: false,
-                        id: 1,
-                        tag:{
-                            "Dativo Singolare":{
-                                            nomeTag: "Dativo Singolare",
-                                            color: "darkmagenta",
-                                            visible: false,
-                            },
-                            "Complemento di Termine":{
-                                            nomeTag: "Complemento di Termine",
-                                            color: "orange",
-                                            visible: false
-                            },
-                             "Genitivo Singolare":{
-                                            nomeTag: "Genitivo Singolare",
-                                            color: "darkmagenta",
-                                            visible: false,
-                            },
-                            "Complemento Specificazione":{
-                                            nomeTag: "Genitivo Singolare",
-                                            color: "darkmagenta",
-                                            visible: false
-                            },
-                        },
-
-                    },
-                    ancillă:{
-                        isComplement: false,
-                        tag:{
-                            "Nominativo Singolare":{
-                                            nomeTag: "Nominativo Singolare",
-                                            color: "darkmagenta",
-                                            visible: false
-                            },
-                            "Soggetto":{
-                                            nomeTag: "Soggetto",
-                                            color: "orange",
-                                            visible: false
-                            }
-                        },
-                    },
-                    amat:{
-                        isComplement: false,
-                        tag:{
-                            "3 Persona":{
-                                            nomeTag: "3 Persona",
-                                            color: "darkmagenta",
-                                            visible: false
-                            },
-                            "Predicato Verbale":{
-                                            nomeTag: "Predicato Verbale",
-                                            color: "darkmagenta",
-                                            visible: false
-                            },
-                            "Singolare":{
-                                            nomeTag: "Singolare",
-                                            color: "orange",
-                                            visible: false
-                            },
-                            "Transitivo":{
-                                            nomeTag: "Transitivo",
-                                            color: "orange",
-                                            visible: false
-                            }
-
-                        },
-                    },
-                    dominae:{
-                        isComplement: false,
-                        id: 2,
-                        tag:{
-                            "Dativo Singolare":{
-                                            nomeTag: "Dativo Singolare",
-                                            color: "darkmagenta",
-                                            visible: false,
-                            },
-                            "Complemento di Termine":{
-                                            nomeTag: "Complemento di Termine",
-                                            color: "orange",
-                                            visible: false
-                            },
-                             "Genitivo Singolare":{
-                                            nomeTag: "Genitivo Singolare",
-                                            color: "darkmagenta",
-                                            visible: false,
-                            },
-                            "Complemento Specificazione":{
-                                            nomeTag: "Genitivo Singolare",
-                                            color: "darkmagenta",
-                                            visible: false
-                            },
-                        },
-
-                    },
-                    filiam:{
-                        isComplement: false,
-                        tag:{
-                            "Accusativo":{
-                                            nomeTag: "Accusativo",
-                                            color: "darkmagenta",
-                                            visible: false
-                            },
-                            "Complemento Oggetto":{
-                                            nomeTag: "Complemento Oggetto",
-                                            color: "orange",
-                                            visible: false
-                            }
-                        },
-                    }
-                }
-            },  **/
             {
-                sentence: "Luscinia canit ancillis",
+                sentence: "Lusciniă canit ancillis",
                 arrayTag: [],
                 otherTranslations: [
                                         "L'usignolo canta alle ancelle"
@@ -393,7 +275,7 @@ export const sliceSentence = createSlice({
                 }
             },
             {
-                sentence: " Bonam dominam amant ancillae",
+                sentence: "Bonam dominam amant ancillae",
                 arrayTag: [],
                 sentenceLength: 4,
                 isTranslated: false,

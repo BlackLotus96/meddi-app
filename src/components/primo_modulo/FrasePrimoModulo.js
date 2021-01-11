@@ -19,6 +19,7 @@ import {ParolaStyle} from "../css_primo_modulo/components_primo_modulo";
 import { useSelector, useDispatch } from 'react-redux';
 import {setModalPredicatoVerbale, setModalPuella, setModalSchola, setModalAncilla, setModalLuscinia} from "../../features/modalSlice";
 import {
+    /**azioni**/
     nextSentence,
     prevSentence, selectCurrentSentence,
     selectSentenceLenght,

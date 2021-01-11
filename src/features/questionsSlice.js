@@ -9,7 +9,7 @@ export const sliceQuestion = createSlice({
         startExercise: false,
         startTranslation: false,
         numberOfSetQuestions: 0,
-        current: 0, //quando arrivo all'ultima domanda riazzero current
+        current: 0,
         showContainerModals: false,
         showResult: false,
         showClickableSentence: false,
@@ -352,44 +352,6 @@ export const sliceQuestion = createSlice({
                             }
                 }
             ]
-
-        /**[
-
-            {
-                domanda: "Dominae, che caso è?",
-                opzioneA: "Nominativo, Plurale",
-                opzioneB: "Genitivo, Singolare",
-                risposta: "Nominativo, Plurale",
-                showError: false,
-
-            },
-            {
-                domanda: "Pulchrae, che caso è?",
-                opzioneA: "Nominativo, Plurale",
-                opzioneB: "Genitivo, Singolare",
-                risposta: "Nominativo, Plurale",
-                showError: false,
-            },
-            {
-                domanda: "Chi è il soggetto(nominativo)?",
-                opzioneA: "Dominae",
-                opzioneB: "Pulchrae",
-                risposta: "Dominae",
-                showError: false,
-            },
-            {
-                domanda: "Qual è la parte nominale?(aggettivo)?",
-                opzioneA: "Dominae",
-                opzioneB: "Pulchrae",
-                risposta: "Pulchrae",
-                showError: false,
-            },
-            {
-                domanda: "fine",
-                showResult: false
-
-            }
-        ]**/
         ]
     },
     reducers: {

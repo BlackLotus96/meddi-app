@@ -42,7 +42,7 @@ export const GrigliaVerboEssereSenzaTraduzione = (props) => {
                         <StyledDivider/>
                         <RigaTabella parola="true">ES</RigaTabella>
                         <StyledDivider/>
-                        <RigaTabella parola="true">EST</RigaTabella>
+                        <RigaTabella rosso parola="true">EST</RigaTabella>
                     </ColonnaTabella>
 
                     <ColonnaTabella span={10}>
@@ -58,6 +58,11 @@ export const GrigliaVerboEssereSenzaTraduzione = (props) => {
                 </ContainerGrid>
     )
 }
+
+
+
+
+
 export const GrigliaPraebetSenzaTraduzione = (props) => {
     const showErrorZero = useSelector(selectShowErrorZero)
     const [isColoredRadice, setIsColoredRadice] = useState(false)
@@ -620,37 +625,29 @@ export const GrigliaVerboCanit = (props) => {
 
 
 export const GrigliaVerboEssere = (props) => {
-    const [showColumn0, setShowColumn0] = useState(false)
-    const [showColumn1, setShowColumn1] = useState(false)
-    const [showColumn2, setShowColumn2] = useState(false)
-    const [showColumn3, setShowColumn3] = useState(false)
+
     return (<>
+
                 <ContainerGrid>
-                    <ColonnaTabella span={4}><RigaTabella>{showColumn0 ? <PlusOutlined onClick={()=>setShowColumn0(false)}/> : <CloseOutlined onClick={()=>setShowColumn0(true)}/>}</RigaTabella></ColonnaTabella>
-                    <ColonnaTabella span={4}><RigaTabella>{showColumn1 ? <PlusOutlined onClick={()=>setShowColumn1(false)}/> : <CloseOutlined onClick={()=>setShowColumn1(true)}/>}</RigaTabella></ColonnaTabella>
-                    <ColonnaTabella span={4}><RigaTabella>{showColumn2 ? <PlusOutlined onClick={()=>setShowColumn2(false)}/> : <CloseOutlined onClick={()=>setShowColumn2(true)}/>}</RigaTabella></ColonnaTabella>
-                    <ColonnaTabella span={4}><RigaTabella>{showColumn3 ? <PlusOutlined onClick={()=>setShowColumn3(false)}/> : <CloseOutlined onClick={()=>setShowColumn3(true)}/>}</RigaTabella></ColonnaTabella>
-                </ContainerGrid>
-                <ContainerGrid>
-                    <ColonnaTabella span={4} hide={showColumn0.toString()}>
-                        <RigaTabella header="true">SINGOLARE</RigaTabella>
+                    <ColonnaTabella span={4}>
+                        <RigaTabella  header="true">SINGOLARE</RigaTabella>
                         <StyledDivider />
                         <RigaTabella parola="true">SUM</RigaTabella>
                         <StyledDivider/>
                         <RigaTabella parola="true">ES</RigaTabella>
                         <StyledDivider/>
-                        <RigaTabella parola="true">EST</RigaTabella>
+                        <RigaTabella rosso parola="true">EST</RigaTabella>
                     </ColonnaTabella>
-                    <ColonnaTabella span={4} hide={showColumn1.toString()}>
+                    <ColonnaTabella span={4}>
                         <RigaTabella header="true">TRADUZIONE</RigaTabella>
                         <StyledDivider/>
                         <RigaTabella traduzione="true">Io sono</RigaTabella>
                         <StyledDivider/>
                         <RigaTabella traduzione="true">Tu sei</RigaTabella>
                         <StyledDivider/>
-                        <RigaTabella traduzione="true">Egli è</RigaTabella>
+                        <RigaTabella rosso traduzione="true">Egli è</RigaTabella>
                     </ColonnaTabella>
-                    <ColonnaTabella span={4} hide={showColumn2.toString()}>
+                    <ColonnaTabella span={4}>
                         <RigaTabella header="true">PLURALE</RigaTabella>
                         <StyledDivider/>
                         <RigaTabella parola="true">SUMUS</RigaTabella>
@@ -659,7 +656,7 @@ export const GrigliaVerboEssere = (props) => {
                         <StyledDivider/>
                         <RigaTabella parola="true">SUNT</RigaTabella>
                     </ColonnaTabella>
-                    <ColonnaTabella span={4} hide={showColumn3.toString()}>
+                    <ColonnaTabella span={4}>
                         <RigaTabella header="true">TRADUZIONE</RigaTabella>
                         <StyledDivider/>
                         <RigaTabella traduzione="true">Noi siamo</RigaTabella>
@@ -1650,9 +1647,6 @@ export const GrigliaPuella = (props) => {
             <DivRow style={{marginRight: "10px"}} color={objColor.coloreDesinenza} isColored={props.isColored}>{props.testo}</DivRow>
         )
     }
-    const [showColumn0, setShowColumn0] = useState(false)
-    const [showColumn1, setShowColumn1] = useState(false)
-    const [showColumn2, setShowColumn2] = useState(false)
 
 
     return(
